@@ -7,5 +7,10 @@ target 'NoFilter' do
 
   # Pods for NoFilter
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Crash'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+
 
 end
