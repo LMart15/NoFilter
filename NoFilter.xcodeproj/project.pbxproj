@@ -14,6 +14,7 @@
 		55C8DE2A1E4BFCDD00AB98DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C8DE281E4BFCDD00AB98DD /* LaunchScreen.storyboard */; };
 		CD2F066A4DB9C2E030746996 /* Pods_NoFilter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7874A03546F128FF4319FD2E /* Pods_NoFilter.framework */; };
 		FD40B4601E4BFFF400AFD61C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD40B45F1E4BFFF400AFD61C /* GoogleService-Info.plist */; };
+		FD6B350D1E55380200475370 /* RegisterScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6B350C1E55380200475370 /* RegisterScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		6B87C90C1898914F0DD11AD0 /* Pods-NoFilter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoFilter.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoFilter/Pods-NoFilter.release.xcconfig"; sourceTree = "<group>"; };
 		7874A03546F128FF4319FD2E /* Pods_NoFilter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoFilter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD40B45F1E4BFFF400AFD61C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FD6B350C1E55380200475370 /* RegisterScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				55C8DE261E4BFCDC00AB98DD /* Assets.xcassets */,
 				55C8DE281E4BFCDD00AB98DD /* LaunchScreen.storyboard */,
 				55C8DE2B1E4BFCDD00AB98DD /* Info.plist */,
+				FD6B350C1E55380200475370 /* RegisterScreenView.swift */,
 			);
 			path = NoFilter;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			files = (
 				55C8DE221E4BFCDC00AB98DD /* ViewController.swift in Sources */,
 				55C8DE201E4BFCDB00AB98DD /* AppDelegate.swift in Sources */,
+				FD6B350D1E55380200475370 /* RegisterScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
