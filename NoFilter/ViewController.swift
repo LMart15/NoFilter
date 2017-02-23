@@ -9,15 +9,18 @@
 import UIKit
 import FirebaseAuth
 
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var username_label: UITextField!
     @IBOutlet weak var password: UITextField!
     
     @IBAction func signIn(_ sender: Any) {
+        
     }
     
     @IBAction func signUp(_ sender: Any) {
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
