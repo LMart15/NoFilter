@@ -39,7 +39,7 @@ class RegisterScreenView: UIViewController,UIImagePickerControllerDelegate,UINav
                     print(error.localizedDescription)
                 }
                 if let user = user {
-                    let imageRef = self.userStorage.child("\(user.uid).jpg")
+                 /*   let imageRef = self.userStorage.child("\(user.uid).jpg")
                     let data = UIImageJPEGRepresentation(self.profileImg.image!, 0.5)
                     let uploadTask = imageRef.put(data!,metadata:nil, completion: { (metadata,err) in
                         if err != nil {
@@ -50,16 +50,29 @@ class RegisterScreenView: UIViewController,UIImagePickerControllerDelegate,UINav
                                 print(er?.localizedDescription)
                             }
                             if let url = url {
-                                let userInfo: [String: Any] = ["uId":user.uid,
+                              /*  let userInfo: [String: Any] = ["uId":user.uid,
                                                                "fullName":self.fullname.text,
                                                                "profileImage":url.absoluteString,
+                                                               "phoneNumber":self.phonenumber.text,
+                                                               "username":self.username.text]
+                                */
+                                let userInfo: [String: Any] = ["uId":user.uid,
+                                                               "fullName":self.fullname.text,
+                                        
                                                                "phoneNumber":self.phonenumber.text,
                                                                "username":self.username.text]
                                 self.userRef.child("users").child(self.username.text!.lowercased()).setValue(userInfo)
                             }
                         })
                         
-                    })
+                    })*/
+                    let userInfo: [String: Any] = ["uId":user.uid,
+                                                   "fullName":self.fullname.text,
+                                                   
+                                                   "phoneNumber":self.phonenumber.text,
+                                                   "username":self.username.text]
+                    self.userRef.child("users").child(self.username.text!.lowercased()).setValue(userInfo)
+
                 }
             })
         }else {
