@@ -1,0 +1,6 @@
+framework module Pods_NoFilter {
+  umbrella header "Pods-NoFilter-umbrella.h"
+
+  export *
+  module * { export * }
+}
