@@ -8,6 +8,10 @@
 
 import UIKit
 
+struct keyvar {
+    static var key = ""
+}
+
 class TableViewCell: UITableViewCell {
 
     

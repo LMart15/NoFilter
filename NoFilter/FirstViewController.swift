@@ -7,13 +7,27 @@
 //
 
 import UIKit
+import Firebase
 
 class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+    @IBOutlet weak var myTable: UITableView!
+    
+    var uProfile = [UserProfile]()
+    var refHandle: UInt!
+    var ref: FIRDatabaseReference!
+    
+    
+    
+    
+    
     var names=["Haapi","gopi","new"]
+    
     var images=["best","gh","unn"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = FIRDatabase.database().reference()
+        fetchPosts()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -36,6 +50,31 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         imghs.image=UIImage(named: images[indexPath.row])
         return cell
     }
+    
+    
+    
+    func fetchPosts(){
+        let eref = FIRDatabase.database().reference().child("Posts")
+        var UserPost = UserPosts()
+        eref.observe(.childAdded, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String : AnyObject]  {
+                print( "snapshot",snapshot.key)
+                UserPost.key = snapshot.key
+                UserPost.author = dictionary["author"] as! String
+                UserPost.likes = dictionary["likes"] as! Int
+                UserPost.pathToImage = dictionary["pathToImage"] as! String
+            }
+            
+            self.names.append(UserPost)
+            
+            DispatchQueue.main.async {
+                self.myTable.reloadData()
+            }
+            
+        } , withCancel: nil)
+        
+    }
+
 
 }
 
