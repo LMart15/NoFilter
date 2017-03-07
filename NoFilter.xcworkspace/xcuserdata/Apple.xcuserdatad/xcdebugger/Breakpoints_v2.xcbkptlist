@@ -9,14 +9,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NoFilter/SecondViewController.swift"
-            timestampString = "510538073.116879"
+            filePath = "NoFilter/FirstViewController.swift"
+            timestampString = "510539746.844506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "UserPosts"
-            landmarkType = "14">
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "fetchPosts()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -25,14 +25,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NoFilter/SecondViewController.swift"
-            timestampString = "510538096.963672"
+            filePath = "NoFilter/FirstViewController.swift"
+            timestampString = "510539799.214203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "UserPosts"
-            landmarkType = "14">
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "fetchPosts()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

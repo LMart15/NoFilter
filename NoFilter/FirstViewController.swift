@@ -13,6 +13,8 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var myTable: UITableView!
     
     var uProfile = [UserProfile]()
+    var uPosts = [UserPost]()
+    var userPosts = UserPost()
     var refHandle: UInt!
     var ref: FIRDatabaseReference!
     
@@ -55,17 +57,17 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     func fetchPosts(){
         let eref = FIRDatabase.database().reference().child("Posts")
-        var UserPost = UserPosts()
+        var userPost = UserPost()
         eref.observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String : AnyObject]  {
                 print( "snapshot",snapshot.key)
-                UserPost.key = snapshot.key
-                UserPost.author = dictionary["author"] as! String
-                UserPost.likes = dictionary["likes"] as! Int
-                UserPost.pathToImage = dictionary["pathToImage"] as! String
+                userPost.key = snapshot.key
+                userPost.author = dictionary["author"] as! String
+                userPost.likes = dictionary["likes"] as! String
+                userPost.pathToImage = dictionary["pathToImage"] as! String
             }
             
-            self.names.append(UserPost)
+            self.uPosts.append(userPost)
             
             DispatchQueue.main.async {
                 self.myTable.reloadData()

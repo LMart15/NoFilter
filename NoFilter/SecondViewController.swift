@@ -7,10 +7,9 @@
 //
 
 import UIKit
-
+import Firebase
 
 struct UserProfile {
-    
     
     var fullname: String = ""
     var phoneNumber: String = ""
@@ -29,25 +28,27 @@ struct UserProfile {
         return dict
     }
 }
-struct UserPosts {
+
+struct UserPost {
     
     var author: String = ""
-    var likes: Int
+    var likes: String = ""
     var pathToImage: String = ""
     var postId: String = ""
-    var userId: String = ""
+    var uId: String = ""
     var key: String = ""
+
     func getDict() -> [String:Any] {
         let dict = ["author": self.author,
                     "likes": self.likes,
                     "pathToImage":self.pathToImage,
                     "postId":self.postId,
-                    "userId":self.userId
-            
-        ] as [String : Any]
+                    "uId":self.uId
+        ]
         return dict
     }
 }
+
 
 class uProfile: NSObject{
     
