@@ -11,17 +11,19 @@ import Firebase
 
 struct UserProfile {
     
-    var fullname: String = ""
+    var fullName: String = ""
     var phoneNumber: String = ""
     var profileImage: String = ""
     var username: String = ""
     var uId: String = ""
+    var email: String = ""
     var key: String = ""
     func getDict() -> [String:Any] {
         let dict = ["username": self.username,
-                    "fullname": self.fullname,
+                    "fullname": self.fullName,
                     "profileImage":self.profileImage,
                     "phoneNumber":self.phoneNumber,
+                    "email":self.email,
                     "uId":self.uId
             
         ]

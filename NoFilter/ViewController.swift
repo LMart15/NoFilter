@@ -34,7 +34,7 @@ class ViewController: UIViewController {
                 //segue to Main Viewcontroller
             //    let vc = UIStoryboard(name:"Main",bundle)
                 print("Login Success")
-                
+                self.performSegue(withIdentifier: "directSign", sender: nil)
             }
         })
     }
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 
 }
 
