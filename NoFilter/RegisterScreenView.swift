@@ -73,7 +73,7 @@ class RegisterScreenView: UIViewController,UIImagePickerControllerDelegate,UINav
                                         
                                                                "phoneNumber":self.phonenumber.text,
                                                                "username":self.username.text]   */
-                                self.userRef.child("users").child(self.username.text!.lowercased()).setValue(userInfo)
+                                self.userRef.child("users").child(user.uid).setValue(userInfo)
                             }
                         })
                         

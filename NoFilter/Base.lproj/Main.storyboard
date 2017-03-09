@@ -227,7 +227,6 @@
                         <barButtonItem key="rightBarButtonItem" title="Done" id="NpH-EH-khb">
                             <connections>
                                 <action selector="done:" destination="5Fv-Me-8vw" id="Bvj-oD-RGs"/>
-                                <segue destination="fXm-CT-oYd" kind="presentation" id="XeK-xK-T28"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -801,7 +800,4 @@
         <image name="sendicon-1" width="60" height="60"/>
         <image name="voiceb" width="52" height="48"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="XeK-xK-T28"/>
-    </inferredMetricsTieBreakers>
 </document>
