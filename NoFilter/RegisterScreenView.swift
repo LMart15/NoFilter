@@ -39,15 +39,34 @@ class RegisterScreenView: UIViewController,UIImagePickerControllerDelegate,UINav
                     print(error.localizedDescription)
                 }
                 if let user = user {
+                    let currentTime = Date()
+                    let dateFormat = DateFormatter()
+                    dateFormat.timeStyle = .medium
+                    dateFormat.dateStyle = .medium
+                    
                     let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest();
                     changeRequest?.displayName = self.fullname.text
                     changeRequest?.commitChanges(completion: nil)
+                    if self.profileImg.image == nil {
+                        print("profile image is nill")
+                        let userInfo: [String: Any] = ["uId":user.uid,
+                                                       "fullName":self.fullname.text,
+                                                       "profileImage":"",
+                                                       "phoneNumber":self.phonenumber.text,
+                                                       "username":self.username.text,
+                                                       "timestamp":dateFormat.string(from: currentTime)]
+                        
+                        self.userRef.child("users").child(user.uid).setValue(userInfo)
                     
+                        self.performSegue(withIdentifier: "signupToHome", sender: self)
+                    }
+                    else {
                     let imageRef = self.userStorage.child("\(user.uid).jpg")
                     let data = UIImageJPEGRepresentation(self.profileImg.image!, 0.5)
                     let uploadTask = imageRef.put(data!,metadata:nil, completion: { (metadata,err) in
                         if err != nil {
                             print(err?.localizedDescription)
+                            
                         }
                         imageRef.downloadURL(completion: {(url,er) in
                             if er != nil{
@@ -55,11 +74,8 @@ class RegisterScreenView: UIViewController,UIImagePickerControllerDelegate,UINav
                             }
                             if let url = url {
                                 //For getting current time
-                                let currentTime = Date()
                                 
-                                let dateFormat = DateFormatter()
-                                dateFormat.timeStyle = .medium
-                                dateFormat.dateStyle = .medium
+                                print("Photo Url :: \(url.absoluteString)")
                                 
                                 let userInfo: [String: Any] = ["uId":user.uid,
                                                                "fullName":self.fullname.text,
@@ -67,30 +83,21 @@ class RegisterScreenView: UIViewController,UIImagePickerControllerDelegate,UINav
                                                                "phoneNumber":self.phonenumber.text,
                                                                "username":self.username.text,
                                                                "timestamp":dateFormat.string(from: currentTime)]
-                                /*
-                                let userInfo: [String: Any] = ["uId":user.uid,
-                                                               "fullName":self.fullname.text,
-                                        
-                                                               "phoneNumber":self.phonenumber.text,
-                                                               "username":self.username.text]   */
+                      
                                 self.userRef.child("users").child(user.uid).setValue(userInfo)
                             }
                         })
                         
                     })
                     uploadTask.resume()
-                 /*   let userInfo: [String: Any] = ["uId":user.uid,
-                                                   "fullName":self.fullname.text,
-                                                   
-                                                   "phoneNumber":self.phonenumber.text,
-                                                   "username":self.username.text]
-                    self.userRef.child("users").child(self.username.text!.lowercased()).setValue(userInfo)*/
-
+                    self.performSegue(withIdentifier: "signupToHome", sender: self)
+                    }
                 }
             })
         }else {
             print("Password does not match")
         }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()

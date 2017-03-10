@@ -45,6 +45,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if FIRAuth.auth()?.currentUser != nil {
+            print(FIRAuth.auth()?.currentUser?.email)
+            self.performSegue(withIdentifier: "directSign", sender: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
