@@ -544,9 +544,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="qfK-dZ-QQW">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Your images" id="7IK-AB-kYG"/>
+                            </items>
+                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imagesCell" rowHeight="120" id="9yc-mE-LaR" customClass="ImagesTableViewCell" customModule="NoFilter" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9yc-mE-LaR" id="aBh-qZ-OHz">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
@@ -605,9 +612,8 @@
                             <outlet property="delegate" destination="O7g-1x-GAl" id="7FG-d4-guc"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Images" id="9xE-r3-Frj" userLabel="Images"/>
+                    <tabBarItem key="tabBarItem" title="Images" image="myimages" id="9xE-r3-Frj" userLabel="Images"/>
                     <navigationItem key="navigationItem" id="R65-ry-xkT"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5zA-cU-Va4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -619,6 +625,7 @@
         <image name="defaultuser" width="52" height="48"/>
         <image name="first" width="30" height="30"/>
         <image name="likeb" width="52" height="48"/>
+        <image name="myimages" width="56" height="56"/>
         <image name="second" width="30" height="30"/>
         <image name="voiceb" width="52" height="48"/>
     </resources>
