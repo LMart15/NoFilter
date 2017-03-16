@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtI-Vy-wWw">
-                                <rect key="frame" x="153.5" y="245" width="68" height="30"/>
+                                <rect key="frame" x="153.5" y="201" width="68" height="30"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="68" id="ocz-HP-8Bb"/>
@@ -37,7 +37,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-jV-WyZ">
-                                <rect key="frame" x="37" y="181" width="301" height="30"/>
+                                <rect key="frame" x="37" y="137" width="301" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="36r-9M-uER"/>
                                 </constraints>
@@ -46,7 +46,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KoO-v8-aUx">
-                                <rect key="frame" x="37" y="120" width="301" height="30"/>
+                                <rect key="frame" x="37" y="76" width="301" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="UTf-MJ-Qc5"/>
                                 </constraints>
@@ -55,13 +55,13 @@
                                 <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="next"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forget password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6t6-tn-orT">
-                                <rect key="frame" x="119.5" y="304" width="137" height="21"/>
+                                <rect key="frame" x="119.5" y="260" width="137" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiJ-FT-650">
-                                <rect key="frame" x="37" y="387" width="301" height="30"/>
+                                <rect key="frame" x="37" y="343" width="301" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Fb">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,7 +71,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1e-Dn-vSe">
-                                <rect key="frame" x="37" y="333" width="301" height="30"/>
+                                <rect key="frame" x="37" y="289" width="301" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="G+">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -81,7 +81,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BIK-bL-Cyg">
-                                <rect key="frame" x="37" y="437" width="301" height="30"/>
+                                <rect key="frame" x="37" y="393" width="301" height="30"/>
                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="SignUp">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -243,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xlj-7Z-PCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="990" y="867"/>
+            <point key="canvasLocation" x="990" y="958"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2dt-qI-stk">
@@ -263,7 +263,7 @@
             </objects>
             <point key="canvasLocation" x="73" y="123"/>
         </scene>
-        <!--First-->
+        <!--Home-->
         <scene sceneID="FDC-B7-oDj">
             <objects>
                 <viewController id="87e-af-f5Z" customClass="FirstViewController" customModule="NoFilter" customModuleProvider="target" sceneMemberID="viewController">
@@ -309,7 +309,7 @@
                                         <rect key="frame" x="0.0" y="28" width="361" height="456"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CvU-va-R0X" id="gLz-5s-WwE">
-                                            <rect key="frame" x="0.0" y="0.0" width="361" height="455"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="455.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultuser" translatesAutoresizingMaskIntoConstraints="NO" id="qTp-2B-Ubs">
@@ -424,7 +424,7 @@
                             <constraint firstItem="RaX-O1-9K3" firstAttribute="leading" secondItem="1x0-z9-CyR" secondAttribute="trailing" constant="6" id="sja-dK-OsM"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="K2X-7d-NzD"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home-7" id="K2X-7d-NzD"/>
                     <connections>
                         <outlet property="postTable" destination="VZi-GG-RkO" id="zvv-LS-UaB"/>
                         <outlet property="userProfileName" destination="RaX-O1-9K3" id="LqU-R9-DXf"/>
@@ -467,14 +467,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="0Ho-QJ-mbr"/>
+                    <tabBarItem key="tabBarItem" title="Camera" image="camera-7" id="0Ho-QJ-mbr"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="logOutSegue" id="KaL-qg-q4s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVg-Eg-hf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1877.5999999999999" y="957.57121439280365"/>
+            <point key="canvasLocation" x="1842" y="958"/>
         </scene>
         <!--Friends-->
         <scene sceneID="kAf-0k-vyH">
@@ -489,7 +489,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="WaM-XJ-eB1"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="circle-user-7" id="WaM-XJ-eB1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xmd-IO-TkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -508,11 +508,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="3oz-ik-Rv8"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="3oz-ik-Rv8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjF-xT-fiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3559" y="923"/>
+            <point key="canvasLocation" x="3540" y="958"/>
         </scene>
         <!--MyImages-->
         <scene sceneID="uSR-uE-HXZ">
@@ -548,7 +548,7 @@
                             <constraint firstAttribute="centerX" secondItem="xAg-Nb-FsM" secondAttribute="centerX" id="lQk-Cf-6TN"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="rfG-NL-AeN"/>
+                    <tabBarItem key="tabBarItem" title="My Images" id="rfG-NL-AeN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaW-Ol-cXN" sceneMemberID="firstResponder"/>
             </objects>
@@ -562,7 +562,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="RVR-ko-p0W">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="87e-af-f5Z" kind="relationship" relationship="viewControllers" id="fud-pF-5us"/>
@@ -578,11 +579,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera-7" width="30" height="30"/>
+        <image name="circle-user-7" width="30" height="30"/>
         <image name="commentsb" width="52" height="48"/>
         <image name="defaultuser" width="52" height="48"/>
-        <image name="first" width="30" height="30"/>
+        <image name="home-7" width="30" height="30"/>
         <image name="likeb" width="52" height="48"/>
-        <image name="second" width="30" height="30"/>
         <image name="voiceb" width="52" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
