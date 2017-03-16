@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DKCamera.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,12 +27,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4642778A0BF85E26241DE1ABCCA9B122</key>
+		<key>6D5CEDECD3D8DC52EA507E0431BDA8A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D5CEDECD3D8DC52EA507E0431BDA8A0</key>
+		<key>714E315BB23E95FEA43B6E772702966E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B4F0DB78DE4C82D01A8889D659B92CA8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

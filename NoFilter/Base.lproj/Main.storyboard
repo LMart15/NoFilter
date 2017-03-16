@@ -309,7 +309,7 @@
                                         <rect key="frame" x="0.0" y="28" width="361" height="456"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CvU-va-R0X" id="gLz-5s-WwE">
-                                            <rect key="frame" x="0.0" y="0.0" width="361" height="455.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="455"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultuser" translatesAutoresizingMaskIntoConstraints="NO" id="qTp-2B-Ubs">
@@ -436,10 +436,10 @@
             </objects>
             <point key="canvasLocation" x="3154" y="-589"/>
         </scene>
-        <!--Item-->
+        <!--CameraView-->
         <scene sceneID="cQ0-yN-jVu">
             <objects>
-                <viewController id="h6v-hO-kBi" sceneMemberID="viewController">
+                <viewController title="CameraView" id="h6v-hO-kBi" customClass="CameraViewController" customModule="NoFilter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pqo-d3-wzt"/>
                         <viewControllerLayoutGuide type="bottom" id="2EG-dg-cuy"/>
@@ -447,18 +447,39 @@
                     <view key="view" contentMode="scaleToFill" id="XbY-AX-NYF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaM-h2-A9y">
+                                <rect key="frame" x="149" y="270" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Take Photo"/>
+                                <connections>
+                                    <action selector="takePhoto:" destination="h6v-hO-kBi" eventType="touchUpInside" id="cSf-6b-s1O"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n26-ik-oHY">
+                                <rect key="frame" x="163" y="318" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logOut:" destination="h6v-hO-kBi" eventType="touchUpInside" id="NTJ-c2-SbL"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="0Ho-QJ-mbr"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="logOutSegue" id="KaL-qg-q4s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVg-Eg-hf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2015" y="906"/>
+            <point key="canvasLocation" x="1877.5999999999999" y="957.57121439280365"/>
         </scene>
-        <!--Item-->
+        <!--Friends-->
         <scene sceneID="kAf-0k-vyH">
             <objects>
-                <viewController id="aEW-9S-ks3" sceneMemberID="viewController">
+                <viewController title="Friends" id="aEW-9S-ks3" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9ry-gA-PDy"/>
                         <viewControllerLayoutGuide type="bottom" id="odh-fw-vQr"/>
@@ -472,7 +493,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xmd-IO-TkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2681" y="905"/>
+            <point key="canvasLocation" x="2614" y="958"/>
         </scene>
         <!--Profile-->
         <scene sceneID="iWk-8T-fpt">
@@ -491,7 +512,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjF-xT-fiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3383" y="904"/>
+            <point key="canvasLocation" x="3559" y="923"/>
         </scene>
         <!--MyImages-->
         <scene sceneID="uSR-uE-HXZ">
@@ -566,5 +587,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nQr-tq-eFl"/>
+        <segue reference="KaL-qg-q4s"/>
     </inferredMetricsTieBreakers>
 </document>

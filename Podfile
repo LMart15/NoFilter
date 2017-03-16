@@ -11,6 +11,5 @@ target 'NoFilter' do
   pod 'Firebase/Crash'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
-
-
+  pod ‘DKCamera’
 end

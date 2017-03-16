@@ -18,6 +18,7 @@
 		CD2F066A4DB9C2E030746996 /* Pods_NoFilter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7874A03546F128FF4319FD2E /* Pods_NoFilter.framework */; };
 		FD40B4601E4BFFF400AFD61C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD40B45F1E4BFFF400AFD61C /* GoogleService-Info.plist */; };
 		FD6B350D1E55380200475370 /* RegisterScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6B350C1E55380200475370 /* RegisterScreenView.swift */; };
+		FDA677441E7A01CE005D04FC /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA677431E7A01CE005D04FC /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		7874A03546F128FF4319FD2E /* Pods_NoFilter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoFilter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD40B45F1E4BFFF400AFD61C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD6B350C1E55380200475370 /* RegisterScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterScreenView.swift; sourceTree = "<group>"; };
+		FDA677431E7A01CE005D04FC /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				55C8DE281E4BFCDD00AB98DD /* LaunchScreen.storyboard */,
 				55C8DE2B1E4BFCDD00AB98DD /* Info.plist */,
 				FD6B350C1E55380200475370 /* RegisterScreenView.swift */,
+				FDA677431E7A01CE005D04FC /* CameraViewController.swift */,
 			);
 			path = NoFilter;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				55C8DE201E4BFCDB00AB98DD /* AppDelegate.swift in Sources */,
 				FD6B350D1E55380200475370 /* RegisterScreenView.swift in Sources */,
 				1832BE4F1E6A36920012C882 /* TableViewCell.swift in Sources */,
+				FDA677441E7A01CE005D04FC /* CameraViewController.swift in Sources */,
 				1832BE4E1E6A36920012C882 /* SecondViewController.swift in Sources */,
 				1832BE4D1E6A36920012C882 /* FirstViewController.swift in Sources */,
 			);
