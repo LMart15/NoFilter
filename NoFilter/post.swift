@@ -8,6 +8,12 @@
 
 import UIKit
 
-class post: NSObject {
+public class Post: NSObject {
 
+    public var author:String!
+     public var likes:Int!
+     public var pathImage:String!
+     public var userId:String!
+     public var postId:String!
+    
 }

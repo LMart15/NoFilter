@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		104FA9641E819A5800E2AB13 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FA9631E819A5800E2AB13 /* user.swift */; };
+		104FA9661E819AB000E2AB13 /* post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FA9651E819AB000E2AB13 /* post.swift */; };
+		104FA9681E819B7500E2AB13 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FA9671E819B7500E2AB13 /* DataViewController.swift */; };
 		1832BE4D1E6A36920012C882 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4A1E6A36920012C882 /* FirstViewController.swift */; };
 		1832BE4E1E6A36920012C882 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4B1E6A36920012C882 /* SecondViewController.swift */; };
 		1832BE4F1E6A36920012C882 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4C1E6A36920012C882 /* TableViewCell.swift */; };
@@ -23,6 +26,10 @@
 
 /* Begin PBXFileReference section */
 		06D14213E192D9483A654FC7 /* Pods-NoFilter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoFilter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoFilter/Pods-NoFilter.debug.xcconfig"; sourceTree = "<group>"; };
+		104FA9631E819A5800E2AB13 /* user.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
+		104FA9651E819AB000E2AB13 /* post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = post.swift; sourceTree = "<group>"; };
+		104FA9671E819B7500E2AB13 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		1053F7781E80B9A40093BD1A /* DKCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DKCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1832BE4A1E6A36920012C882 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		1832BE4B1E6A36920012C882 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		1832BE4C1E6A36920012C882 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -64,6 +71,7 @@
 		55C8DE131E4BFCDB00AB98DD = {
 			isa = PBXGroup;
 			children = (
+				1053F7781E80B9A40093BD1A /* DKCamera.framework */,
 				55C8DE1E1E4BFCDB00AB98DD /* NoFilter */,
 				55C8DE1D1E4BFCDB00AB98DD /* Products */,
 				52A4BA073D1608D336765F7F /* Pods */,
@@ -94,6 +102,9 @@
 				55C8DE2B1E4BFCDD00AB98DD /* Info.plist */,
 				FD6B350C1E55380200475370 /* RegisterScreenView.swift */,
 				FDA677431E7A01CE005D04FC /* CameraViewController.swift */,
+				104FA9631E819A5800E2AB13 /* user.swift */,
+				104FA9651E819AB000E2AB13 /* post.swift */,
+				104FA9671E819B7500E2AB13 /* DataViewController.swift */,
 			);
 			path = NoFilter;
 			sourceTree = "<group>";
@@ -233,9 +244,12 @@
 			files = (
 				55C8DE221E4BFCDC00AB98DD /* ViewController.swift in Sources */,
 				55C8DE201E4BFCDB00AB98DD /* AppDelegate.swift in Sources */,
+				104FA9681E819B7500E2AB13 /* DataViewController.swift in Sources */,
 				FD6B350D1E55380200475370 /* RegisterScreenView.swift in Sources */,
 				1832BE4F1E6A36920012C882 /* TableViewCell.swift in Sources */,
+				104FA9641E819A5800E2AB13 /* user.swift in Sources */,
 				FDA677441E7A01CE005D04FC /* CameraViewController.swift in Sources */,
+				104FA9661E819AB000E2AB13 /* post.swift in Sources */,
 				1832BE4E1E6A36920012C882 /* SecondViewController.swift in Sources */,
 				1832BE4D1E6A36920012C882 /* FirstViewController.swift in Sources */,
 			);

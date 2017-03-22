@@ -9,5 +9,9 @@
 import UIKit
 
 class user: NSObject {
+    
+    var userID:String!
+    var fullName:String!
+    var imagePath:String!
 
 }

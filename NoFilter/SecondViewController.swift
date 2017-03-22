@@ -38,14 +38,17 @@ struct UserPost {
     var pathToImage: String = ""
     var postId: String = ""
     var uId: String = ""
+    var timestamp: String = ""
     var key: String = ""
 
     func getDict() -> [String:Any] {
-        let dict = ["author": self.author,
+        let dict = ["displayName": self.author,
                     "likes": self.likes,
                     "pathToImage":self.pathToImage,
                     "postId":self.postId,
-                    "uId":self.uId
+                    "uId":self.uId,
+                    "timestamp":self.timestamp,
+                    "key":self.key
         ]
         return dict
     }
