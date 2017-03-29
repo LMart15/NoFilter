@@ -104,11 +104,15 @@ class RegisterScreenView: UIViewController,UIImagePickerControllerDelegate,UINav
         // Do any additional setup after loading the view, typically from a nib.
        // profileImg.layer.cornerRadius = 25;
        // profileImg.layer.masksToBounds = true
+     //   self.navigationController?.navigationBar.isHidden = false;
         picker.delegate = self
         let storage = FIRStorage.storage().reference(forURL:"gs://projectreall-35e59.appspot.com")
         userStorage = storage.child("users")
         userRef = FIRDatabase.database().reference()
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true;
     }
     
     override func didReceiveMemoryWarning() {

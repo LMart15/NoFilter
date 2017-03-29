@@ -40,7 +40,7 @@ struct UserPost {
     var uId: String = ""
     var timestamp: String = ""
     var key: String = ""
-
+    var peopleWhoLike:[String] = [String]()
     func getDict() -> [String:Any] {
         let dict = ["displayName": self.author,
                     "likes": self.likes,

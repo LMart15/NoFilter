@@ -11,6 +11,8 @@ import Firebase
 
 class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //@IBOutlet weak var myTable: UITableView!
+    //likes
+    @IBOutlet weak var likes: UILabel!
     
     @IBOutlet weak var postTable: UITableView!
     var uProfile = [UserProfile]()
@@ -27,10 +29,14 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     @IBOutlet weak var userProfilePic: UIImageView!
    
-    @IBOutlet weak var userTagLine: UITextView!
-    @IBOutlet weak var userProfileName: UILabel!
-   
     
+    @IBOutlet weak var showStatus: UILabel!
+    
+    @IBOutlet weak var editStatusButton: UIButton!
+    
+    @IBOutlet weak var editStatusArea: UITextField!
+       var editStatusFirstValue=false
+    @IBOutlet weak var userProfileName: UILabel!
    
     
     var names=["Haapi","gopi","new"]
@@ -40,11 +46,17 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = FIRDatabase.database().reference()
-        
+       
     //  fetchPostedData()
         fetchUser()
         fetchPosts()
-
+        
+        //status things
+        
+         editStatusArea.isEnabled=false
+         editStatusArea.isHidden=true
+        
+        //status
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -113,9 +125,14 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         let data = NSData(contentsOf: url! as URL) // this URL convert into Data
         if data != nil {  //Some time Data value will be nil so we need to validate such things
         imghs.image = UIImage(data: data! as Data)
+            cell.postId=self.uPostsList[indexPath.row].postId
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
     func fetchUser(){
@@ -136,6 +153,8 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
                 let data = NSData(contentsOf: url! as URL) // this URL convert into Data
                 if data != nil {  //Some time Data value will be nil so we need to validate such things
                     self.userProfilePic.image = UIImage(data: data! as Data)
+                    self.userProfilePic.layer.cornerRadius = self.userProfilePic.frame.width/2.0
+                    self.userProfilePic.layer.masksToBounds = true
                 }
                 
             
@@ -177,5 +196,61 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         } , withCancel: nil)
         
     }
+    
+    @IBAction func performEditStatus(_ sender: Any) {
+        
+    if(editStatusFirstValue==true)
+    {
+        var status=editStatusArea.text
+        editStatusArea.isEnabled=false
+        editStatusArea.isHidden=true
+        showStatus.isEnabled=true
+        showStatus.isHidden=false
+        showStatus.text=status
+        editStatusButton.setTitle("Edit", for: .normal)
+        editStatusFirstValue=false
+        
+        let eref = FIRDatabase.database().reference().child("posts")
+        
+        eref.observe(.childAdded, with: {
+                (snaps) in
+                    if let dictn = snaps.value as? [String : AnyObject]
+                    {
+                        let userIDforLabel = FIRAuth.auth()?.currentUser?.uid
+                        if(userIDforLabel == dictn["uId"] as? String)
+                        {
+                            print( "snapKey",snaps.key, "hello")
+                        }
+                    }
+            DispatchQueue.main.async {
+                self.postTable.reloadData()
+            }
+            
+        } , withCancel: nil)
+        }
+       else if(editStatusFirstValue==false)
+        {
+        editStatusFirstValue=true
+           var status=showStatus.text
+             showStatus.isEnabled=false
+        showStatus.isHidden=true
+        editStatusArea.isEnabled=true
+        editStatusArea.isHidden=false
+        editStatusArea.text=status
+        editStatusButton.setTitle("Done", for: .normal)
+        }
+        
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+   
+    
 }
 

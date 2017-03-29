@@ -1,16 +1,15 @@
 //
-//  TextCommentsController.swift
+//  TempViewController.swift
 //  NoFilter
 //
-//  Created by harpreet singh on 2017-03-26.
+//  Created by harpreet singh on 2017-03-28.
 //  Copyright © 2017 mapd.centennial.proapptive. All rights reserved.
 //
 
 import UIKit
 
-class TextCommentsController: UIViewController {
+class TempViewController: UIViewController {
 
-    @IBOutlet weak var send: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,9 +31,5 @@ class TextCommentsController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func sendComment(_ sender: UIButton) {
-        
-        dismiss(animated: true, completion: nil)
-    }
 
 }

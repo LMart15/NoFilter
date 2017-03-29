@@ -10,6 +10,16 @@
 		104FA9641E819A5800E2AB13 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FA9631E819A5800E2AB13 /* user.swift */; };
 		104FA9661E819AB000E2AB13 /* post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FA9651E819AB000E2AB13 /* post.swift */; };
 		104FA9681E819B7500E2AB13 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FA9671E819B7500E2AB13 /* DataViewController.swift */; };
+		10D52CD01E8821AC009269FE /* TextCommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D52CCF1E8821AC009269FE /* TextCommentsController.swift */; };
+		10D52CD51E8841E8009269FE /* TxtCommentCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D52CD31E8841E8009269FE /* TxtCommentCellTableViewCell.swift */; };
+		10D52CD61E8841E8009269FE /* TxtCommentCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10D52CD41E8841E8009269FE /* TxtCommentCellTableViewCell.xib */; };
+		10D52CD91E884206009269FE /* AudioCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D52CD71E884206009269FE /* AudioCommentCell.swift */; };
+		10D52CDA1E884206009269FE /* AudioCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10D52CD81E884206009269FE /* AudioCommentCell.xib */; };
+		10D52CDC1E897AB9009269FE /* TxtComntHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D52CDB1E897AB9009269FE /* TxtComntHandler.swift */; };
+		10D52CDE1E8AD97C009269FE /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D52CDD1E8AD97C009269FE /* TempViewController.swift */; };
+		10D52CE01E8B4EA2009269FE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D52CDF1E8B4EA2009269FE /* LoginViewController.swift */; };
+		10D52CE21E8B8047009269FE /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D52CE11E8B8047009269FE /* CommentsViewController.swift */; };
+		10D52CE41E8B832E009269FE /* CommentsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D52CE31E8B832E009269FE /* CommentsViewCell.swift */; };
 		1832BE4D1E6A36920012C882 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4A1E6A36920012C882 /* FirstViewController.swift */; };
 		1832BE4E1E6A36920012C882 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4B1E6A36920012C882 /* SecondViewController.swift */; };
 		1832BE4F1E6A36920012C882 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4C1E6A36920012C882 /* TableViewCell.swift */; };
@@ -30,6 +40,16 @@
 		104FA9651E819AB000E2AB13 /* post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = post.swift; sourceTree = "<group>"; };
 		104FA9671E819B7500E2AB13 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		1053F7781E80B9A40093BD1A /* DKCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DKCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		10D52CCF1E8821AC009269FE /* TextCommentsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCommentsController.swift; sourceTree = "<group>"; };
+		10D52CD31E8841E8009269FE /* TxtCommentCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxtCommentCellTableViewCell.swift; sourceTree = "<group>"; };
+		10D52CD41E8841E8009269FE /* TxtCommentCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TxtCommentCellTableViewCell.xib; sourceTree = "<group>"; };
+		10D52CD71E884206009269FE /* AudioCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCommentCell.swift; sourceTree = "<group>"; };
+		10D52CD81E884206009269FE /* AudioCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioCommentCell.xib; sourceTree = "<group>"; };
+		10D52CDB1E897AB9009269FE /* TxtComntHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxtComntHandler.swift; sourceTree = "<group>"; };
+		10D52CDD1E8AD97C009269FE /* TempViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
+		10D52CDF1E8B4EA2009269FE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		10D52CE11E8B8047009269FE /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		10D52CE31E8B832E009269FE /* CommentsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewCell.swift; sourceTree = "<group>"; };
 		1832BE4A1E6A36920012C882 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		1832BE4B1E6A36920012C882 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		1832BE4C1E6A36920012C882 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -105,6 +125,16 @@
 				104FA9631E819A5800E2AB13 /* user.swift */,
 				104FA9651E819AB000E2AB13 /* post.swift */,
 				104FA9671E819B7500E2AB13 /* DataViewController.swift */,
+				10D52CCF1E8821AC009269FE /* TextCommentsController.swift */,
+				10D52CD31E8841E8009269FE /* TxtCommentCellTableViewCell.swift */,
+				10D52CD41E8841E8009269FE /* TxtCommentCellTableViewCell.xib */,
+				10D52CD71E884206009269FE /* AudioCommentCell.swift */,
+				10D52CD81E884206009269FE /* AudioCommentCell.xib */,
+				10D52CDB1E897AB9009269FE /* TxtComntHandler.swift */,
+				10D52CDD1E8AD97C009269FE /* TempViewController.swift */,
+				10D52CDF1E8B4EA2009269FE /* LoginViewController.swift */,
+				10D52CE11E8B8047009269FE /* CommentsViewController.swift */,
+				10D52CE31E8B832E009269FE /* CommentsViewCell.swift */,
 			);
 			path = NoFilter;
 			sourceTree = "<group>";
@@ -184,6 +214,8 @@
 				FD40B4601E4BFFF400AFD61C /* GoogleService-Info.plist in Resources */,
 				55C8DE271E4BFCDC00AB98DD /* Assets.xcassets in Resources */,
 				55C8DE251E4BFCDC00AB98DD /* Main.storyboard in Resources */,
+				10D52CDA1E884206009269FE /* AudioCommentCell.xib in Resources */,
+				10D52CD61E8841E8009269FE /* TxtCommentCellTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,13 +274,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10D52CD01E8821AC009269FE /* TextCommentsController.swift in Sources */,
+				10D52CDC1E897AB9009269FE /* TxtComntHandler.swift in Sources */,
 				55C8DE221E4BFCDC00AB98DD /* ViewController.swift in Sources */,
+				10D52CE21E8B8047009269FE /* CommentsViewController.swift in Sources */,
+				10D52CD91E884206009269FE /* AudioCommentCell.swift in Sources */,
+				10D52CD51E8841E8009269FE /* TxtCommentCellTableViewCell.swift in Sources */,
 				55C8DE201E4BFCDB00AB98DD /* AppDelegate.swift in Sources */,
 				104FA9681E819B7500E2AB13 /* DataViewController.swift in Sources */,
 				FD6B350D1E55380200475370 /* RegisterScreenView.swift in Sources */,
+				10D52CDE1E8AD97C009269FE /* TempViewController.swift in Sources */,
 				1832BE4F1E6A36920012C882 /* TableViewCell.swift in Sources */,
 				104FA9641E819A5800E2AB13 /* user.swift in Sources */,
+				10D52CE41E8B832E009269FE /* CommentsViewCell.swift in Sources */,
 				FDA677441E7A01CE005D04FC /* CameraViewController.swift in Sources */,
+				10D52CE01E8B4EA2009269FE /* LoginViewController.swift in Sources */,
 				104FA9661E819AB000E2AB13 /* post.swift in Sources */,
 				1832BE4E1E6A36920012C882 /* SecondViewController.swift in Sources */,
 				1832BE4D1E6A36920012C882 /* FirstViewController.swift in Sources */,
