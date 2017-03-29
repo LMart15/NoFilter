@@ -23,10 +23,10 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     var refHandle: UInt!
     var ref: FIRDatabaseReference!
     var userProfile = UserProfile()
-    
+    var userRef: FIRDatabaseReference!
     var posts=Post()          //fetch array info from post class which fetch posts from database server
     var numPosts=[Post]()
-    
+    var postt:String?
     @IBOutlet weak var userProfilePic: UIImageView!
    
     
@@ -45,8 +45,8 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = FIRDatabase.database().reference()
-       
+        ref = FIRDatabase.database().reference() //?????
+        
     //  fetchPostedData()
         fetchUser()
         fetchPosts()
@@ -132,7 +132,10 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let row = indexPath.row
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+      return  true
     }
     
     func fetchUser(){
@@ -201,7 +204,8 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
     if(editStatusFirstValue==true)
     {
-        var status=editStatusArea.text
+        let userStatusRef = self.ref.child("users").child((FIRAuth.auth()?.currentUser?.uid)!)
+        let status=editStatusArea.text
         editStatusArea.isEnabled=false
         editStatusArea.isHidden=true
         showStatus.isEnabled=true
@@ -210,28 +214,13 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         editStatusButton.setTitle("Edit", for: .normal)
         editStatusFirstValue=false
         
-        let eref = FIRDatabase.database().reference().child("posts")
-        
-        eref.observe(.childAdded, with: {
-                (snaps) in
-                    if let dictn = snaps.value as? [String : AnyObject]
-                    {
-                        let userIDforLabel = FIRAuth.auth()?.currentUser?.uid
-                        if(userIDforLabel == dictn["uId"] as? String)
-                        {
-                            print( "snapKey",snaps.key, "hello")
-                        }
-                    }
-            DispatchQueue.main.async {
-                self.postTable.reloadData()
-            }
-            
-        } , withCancel: nil)
+        userStatusRef.updateChildValues(["userStatus": status])
+      
         }
        else if(editStatusFirstValue==false)
         {
         editStatusFirstValue=true
-           var status=showStatus.text
+           let status=showStatus.text
              showStatus.isEnabled=false
         showStatus.isHidden=true
         editStatusArea.isEnabled=true
@@ -242,7 +231,6 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -250,6 +238,18 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if  segue.identifier == "segueTransfer",
+            let destination = segue.destination as? CommentsViewController,
+            var index = postTable.indexPathForSelectedRow?.row
+            {
+            destination.postId = self.uPostsList[index].postId
+            }
+            print("From comments Segue:\(index)")
+                
+                
+    }
+
    
     
 }

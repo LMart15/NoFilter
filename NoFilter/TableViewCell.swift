@@ -125,7 +125,13 @@ class TableViewCell: UITableViewCell {
         unlikeB.isEnabled=true
         unlikeB.isHidden=false
         showLike.text=String(county)+" likes"
-        
+        let update=["likes":county]
+          let ref : FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+
+        ref.child("posts").child(self.postId).updateChildValues(update)
+        print(self.postId)
+
        
     }
     //Unlike Button functionality
@@ -146,11 +152,19 @@ class TableViewCell: UITableViewCell {
         let update=["likes":county]
        
     ref.child("posts").child(self.postId).updateChildValues(update)
-    
+         print("test\(self.postId)")
         //get likes
         
        
         
+    }
+    
+   
+    
+    @IBAction func performCommentsButtonAction(_ sender: UIButton) {
+        ///sender.ti = self.postId
+        print(self.postId)
+    
     }
     
     
