@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4CEB80DD7A6C4C65A15E38AE24C0D48575E31BD1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B8F7F4C08B75B0499575D4B8455869E0084C5A06" : 9223372036854775807,
+    "4CEB80DD7A6C4C65A15E38AE24C0D48575E31BD1" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B94264F9-8CB7-4F5B-8EE9-776848FC9AEB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B8F7F4C08B75B0499575D4B8455869E0084C5A06" : "iOS\/MyImagesTab\/",
+    "4CEB80DD7A6C4C65A15E38AE24C0D48575E31BD1" : "NoFilter\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "NoFilter",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "NoFilter.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/LMart15\/NoFilter.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4CEB80DD7A6C4C65A15E38AE24C0D48575E31BD1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/lesquive1\/MyImageTab.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B8F7F4C08B75B0499575D4B8455869E0084C5A06"
+    }
+  ]
+}

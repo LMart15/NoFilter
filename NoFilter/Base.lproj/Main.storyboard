@@ -625,7 +625,7 @@
         <image name="defaultuser" width="52" height="48"/>
         <image name="first" width="30" height="30"/>
         <image name="likeb" width="52" height="48"/>
-        <image name="myimages" width="56" height="56"/>
+        <image name="myimages" width="25" height="25"/>
         <image name="second" width="30" height="30"/>
         <image name="voiceb" width="52" height="48"/>
     </resources>
