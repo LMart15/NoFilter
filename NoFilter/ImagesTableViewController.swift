@@ -16,6 +16,8 @@ class ImagesTableViewController: UITableViewController {
     var uPostsList = [UserPost]()
     var userCellPosts = UserPost()
     
+    var iPostCount: Int = 0
+    
     func fetchPosts(){
         let eref = FIRDatabase.database().reference().child("posts")
         var userPost = UserPost()
@@ -76,17 +78,53 @@ class ImagesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "imagesCell", for: indexPath) as! ImagesTableViewCell
         
         // Fetches the appropriate image for the data source layout.
+        
+        if (iPostCount == 0) {
+            iPostCount = indexPath.row
+        } else {
+            iPostCount += 1
+        }
+        
+        if (uPostsList.count > iPostCount) {
+            userCellPosts = uPostsList[iPostCount]
+            var imgurl = userCellPosts.pathToImage
+            var url = NSURL(string: imgurl)
+            var data = NSData(contentsOf: url! as URL) // this URL convert into Data
+            if data != nil {  //Some time Data value will be nil so we need to validate such things
+                cell.image1Cell.image = UIImage(data: data! as Data)
+                
+            }
+            
+            iPostCount += 1
+            
+            if (uPostsList.count > (iPostCount)) {
+                userCellPosts = uPostsList[iPostCount]
+                imgurl = userCellPosts.pathToImage
+                url = NSURL(string: imgurl)
+                data = NSData(contentsOf: url! as URL) // this URL convert into Data
+                if data != nil {  //Some time Data value will be nil so we need to validate such things
+                    cell.image2Cell.image = UIImage(data: data! as Data)
+                    
+                }
+            }
+            
+            iPostCount += 1
+            
+            if (uPostsList.count > (iPostCount)) {
+                userCellPosts = uPostsList[iPostCount]
+                imgurl = userCellPosts.pathToImage
+                url = NSURL(string: imgurl)
+                data = NSData(contentsOf: url! as URL) // this URL convert into Data
+                if data != nil {  //Some time Data value will be nil so we need to validate such things
+                    cell.image3Cell.image = UIImage(data: data! as Data)
+                    
+                }
+            }
+        }
+
 
         
-        userCellPosts = uPostsList[indexPath.row]
-        let imgurl = userCellPosts.pathToImage
-        let url = NSURL(string: imgurl)
-        let data = NSData(contentsOf: url! as URL) // this URL convert into Data
-        if data != nil {  //Some time Data value will be nil so we need to validate such things
-            cell.image1Cell.image = UIImage(data: data! as Data)
-            cell.image2Cell.image = UIImage(data: data! as Data)
-            cell.image3Cell.image = UIImage(data: data! as Data)
-        }
+
     
         return cell
     }
