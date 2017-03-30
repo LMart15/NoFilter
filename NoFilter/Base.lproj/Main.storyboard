@@ -779,13 +779,13 @@
         <!--Images-->
         <scene sceneID="kb0-Xk-tyy">
             <objects>
-                <tableViewController id="ZiG-v6-Tme" customClass="ImagesTableViewController" customModule="MyImagesTab" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ZiG-v6-Tme" customClass="ImagesTableViewController" customModule="NoFilter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" id="oga-56-7ru">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imagesCell" rowHeight="120" id="QB0-0o-7pa" customClass="ImagesTableViewCell" customModule="MyImagesTab" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imagesCell" rowHeight="120" id="QB0-0o-7pa" customClass="ImagesTableViewCell" customModule="NoFilter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="QB0-0o-7pa" id="igA-5f-f1S">
@@ -847,6 +847,9 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Images" image="second" id="DR3-2A-zDR"/>
                     <navigationItem key="navigationItem" id="fan-fS-b6G"/>
+                    <connections>
+                        <outlet property="imageTableView" destination="oga-56-7ru" id="nVe-Ls-9ax"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqd-Nr-6Rn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

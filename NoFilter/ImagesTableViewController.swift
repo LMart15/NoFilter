@@ -7,29 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class ImagesTableViewController: UITableViewController {
     
+    @IBOutlet weak var imageTableView: UITableView!
     
-    var images = [Images]()
+    var uPostsList = [UserPost]()
+    var userCellPosts = UserPost()
     
-    func loadSampleImages() {
-        let photo1 = UIImage(named: "sample1")!
-        let photo2 = UIImage(named: "sample2")!
-        let photo3 = UIImage(named: "sample3")!
-        let photo4 = UIImage(named: "sample4")!
-        let photo5 = UIImage(named: "sample5")!
-        let photo6 = UIImage(named: "sample6")!
-        
-        //let photo1 = UIImage(named: "meal1")!
-        
-        let image1 = Images(photo1: photo1, photo2: photo2, photo3: photo3)!
-        let image2 = Images(photo1: photo4, photo2: photo5, photo3: photo6)!
-        
-        images += [image1, image2]
-        
-    }
-    /*
     func fetchPosts(){
         let eref = FIRDatabase.database().reference().child("posts")
         var userPost = UserPost()
@@ -39,8 +25,7 @@ class ImagesTableViewController: UITableViewController {
             {
                 let userID = FIRAuth.auth()?.currentUser?.uid
                 if(userID == dictn["uId"] as? String){
-                    //print("postdictvalue",dict.values,"count",dict.count)
-                    print( "snapKey",snaps.key, "hello")
+
                     userPost.author = dictn["displayName"] as! String
                     userPost.likes = String(describing: dictn["likes"])
                     userPost.pathToImage = dictn["pathToImage"] as! String
@@ -53,18 +38,18 @@ class ImagesTableViewController: UITableViewController {
             }
             
             DispatchQueue.main.async {
-                self.postTable.reloadData()
+                self.imageTableView.reloadData()
             }
             
         } , withCancel: nil)
         
     }
-    */
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadSampleImages()
+        fetchPosts()
 
     }
 
@@ -82,7 +67,7 @@ class ImagesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return images.count
+        return uPostsList.count
     }
 
     
@@ -91,11 +76,17 @@ class ImagesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "imagesCell", for: indexPath) as! ImagesTableViewCell
         
         // Fetches the appropriate image for the data source layout.
-        let image = images[indexPath.row]
+
         
-        cell.image1Cell.image = image.photo1
-        cell.image2Cell.image = image.photo2
-        cell.image3Cell.image = image.photo3
+        userCellPosts = uPostsList[indexPath.row]
+        let imgurl = userCellPosts.pathToImage
+        let url = NSURL(string: imgurl)
+        let data = NSData(contentsOf: url! as URL) // this URL convert into Data
+        if data != nil {  //Some time Data value will be nil so we need to validate such things
+            cell.image1Cell.image = UIImage(data: data! as Data)
+            cell.image2Cell.image = UIImage(data: data! as Data)
+            cell.image3Cell.image = UIImage(data: data! as Data)
+        }
     
         return cell
     }
