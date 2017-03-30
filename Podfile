@@ -12,4 +12,14 @@ target 'NoFilter' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod ‘DKCamera’
+  
 end
+
+
+target 'RegisterTester' do
+    pod 'Firebase'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Database'
+    pod 'Firebase/Storage'
+end
+

@@ -30,6 +30,15 @@ class RegisterScreenView: UIViewController,UIImagePickerControllerDelegate,UINav
         picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(picker, animated: true, completion: nil)
     }
+    
+    func isPasswiordsMatch(password : String, confirmedPassword: String) -> Bool {
+        if password == confirmedPassword {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     @IBAction func done(_ sender: Any) {
         guard fullname.text != "", email.text != "",password.text != "" ,confirmpassword.text != "", phonenumber.text != "", username.text != ""else { return }
         if password.text == confirmpassword.text {
