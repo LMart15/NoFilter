@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NoFilter/FirstViewController.swift"
+            timestampString = "510636521.463668"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "FirstViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NoFilter.FirstViewController.names.getter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "NoFilter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csiadmin/Documents/CSIAmerica/Development/ios/NoFilter/NoFilter/FirstViewController.swift"
+                  timestampString = "510631249.242427"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NoFilter.FirstViewController.names.setter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "NoFilter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csiadmin/Documents/CSIAmerica/Development/ios/NoFilter/NoFilter/FirstViewController.swift"
+                  timestampString = "510631249.244181"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NoFilter.FirstViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; NoFilter.FirstViewController"
+                  moduleName = "NoFilter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csiadmin/Documents/CSIAmerica/Development/ios/NoFilter/NoFilter/FirstViewController.swift"
+                  timestampString = "510631249.24563"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "1252">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NoFilter.FirstViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;NoFilter.FirstViewController&gt;"
+                  moduleName = "NoFilter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csiadmin/Documents/CSIAmerica/Development/ios/NoFilter/NoFilter/FirstViewController.swift"
+                  timestampString = "510631249.246925"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "1167">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
