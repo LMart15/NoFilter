@@ -19,7 +19,8 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var commentorInfo = UserProfile()
             //audio file url
    
-    var myAudioplayer:AVAudioPlayer!
+    //var myAudioplayer:AVAudioPlayer!
+    var myAudioplayer:AVPlayer! // Changed
     
     @IBOutlet weak var tableContent: UITableView!
     
@@ -50,6 +51,9 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         let audioPlay = cell.viewWithTag(4) as! UIButton
         
         userCellComments=uCommentsList[indexPath.row]
+        audioPlay.tag = indexPath.row // Added
+        
+        
         
         //Fetch Commentor info - Image and Name from Database
         
@@ -95,7 +99,7 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
             commentViewer.isEnabled=false
             commentViewer.isHidden=true
             url=userCellComments.comment
-            print("comment is>>>>\(userCellComments.comment)")
+            //print("comment is>>>>\(userCellComments.comment)")
             //let ll = "http://gaana.com/song/hamen-tumse-pyar-kitna-2"
             //audioPlay.addTarget(self, action: #selector(self.playAudio(sender:)), for: UIControlEvents.touchUpInside)
             
@@ -161,27 +165,34 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         } , withCancel: nil)
         
     }
-
     
-    func playAudio(sender: UIButton)
-    {
-       if let audiourl = URL(string: url)
-       {
-        do{
-             print(url)
-           try AVAudioSession.sharedInstance().setActive(true)
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            
-            try myAudioplayer=AVAudioPlayer(contentsOf: audiourl )
-            myAudioplayer.prepareToPlay()
-            myAudioplayer.play()
-            print("working")
-        }catch{
-            print("Not working")
-          }
+    @IBAction func btnPlayAudio(_ sender: UIButton) {
+        
+        
+        let url = uCommentsList[sender.tag].comment
+        
+        FIRStorage.storage().reference(forURL: url as! String).metadata { (metadata, error) in
+            if error != nil{
+                print("error getting metadata")
+            } else {
+                let downloadUrl = metadata?.downloadURL()
+                print(downloadUrl!)
+                
+                if downloadUrl != nil{
+                    
+                    self.myAudioplayer = AVPlayer(url: downloadUrl!)
+                    self.myAudioplayer.play()
+                    
+                    
+                    print("downloadUrl obtained and set")
+                }
+            }
         }
-        //
+        
+        
     }
+
+
     
 }
 
