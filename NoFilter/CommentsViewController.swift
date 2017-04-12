@@ -16,7 +16,8 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     public var pid:String!
     var uCommentsList = [UserComments]()
     var userCellComments = UserComments()
-           //audio file url
+    var commentorInfo = UserProfile()
+            //audio file url
    
     var myAudioplayer:AVAudioPlayer!
     
@@ -50,19 +51,31 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         userCellComments=uCommentsList[indexPath.row]
         
-        let userQueryRef = FIRDatabase.database().reference().child("users").queryEqual(toValue: userCellComments.commentedBy)
+        //Fetch Commentor info - Image and Name from Database
         
-        userQueryRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            for snap in snapshot.children {
-                let userSnap = snap as! FIRDataSnapshot
-                let uid = userSnap.key //the uid of each user
-                let userDict = userSnap.value as! [String:AnyObject]
-                let username = userDict["fullName"] as! String
-                let userImage = userDict["profileImage"] as! String
+        let commenterName = FIRDatabase.database().reference().child("users").child(userCellComments.commentedBy)
+        
+        commenterName.observe(.value, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String : AnyObject]  {
+                //print( "usersnapshot",snapshot.children.allObjects)
+                self.commentorInfo.key = snapshot.key
+                self.commentorInfo.fullName = dictionary["fullName"] as! String
+                self.commentorInfo.profileImage = dictionary["profileImage"] as! String
+//                print("fullName",self.commentorInfo.fullName)
+                
+                
+                // Add Commentor Image and Name to comments
+                
+                userName.text = self.commentorInfo.fullName
+                
+                let url = NSURL(string: self.commentorInfo.profileImage)
+                let data = NSData(contentsOf: url! as URL) // this URL convert into Data
+                if data != nil {  //Some time Data value will be nil so we need to validate such things
+                    userImage.setImage(UIImage(data: data! as Data), for: [])
+                }
 
-                print("key = \(uid) and timestamp = \(username)")
-            } 
+                
+            }
         })
         
        
@@ -70,21 +83,24 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         {
             
             audioPlay.isEnabled=false
-             audioPlay.isHidden=true
+            audioPlay.isHidden=true
             commentViewer.isEnabled=true
             commentViewer.isHidden=false
             commentViewer.text = userCellComments.comment as! String?
         }
         else if(userCellComments.type=="audio")
         {
+            audioPlay.isEnabled=true
+            audioPlay.isHidden=false
             commentViewer.isEnabled=false
             commentViewer.isHidden=true
-             audioPlay.isEnabled=true
-             audioPlay.isHidden=false
             url=userCellComments.comment
             print("comment is>>>>\(userCellComments.comment)")
-           // let ll = "http://gaana.com/song/hamen-tumse-pyar-kitna-2"
-                      audioPlay.addTarget(self, action: #selector(self.playAudio(sender:)), for: UIControlEvents.touchUpInside)
+            //let ll = "http://gaana.com/song/hamen-tumse-pyar-kitna-2"
+            //audioPlay.addTarget(self, action: #selector(self.playAudio(sender:)), for: UIControlEvents.touchUpInside)
+            
+            
+            
         }
         
          return cell

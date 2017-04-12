@@ -103,8 +103,6 @@ class AudioRecorder: UIViewController,AVAudioPlayerDelegate, AVAudioRecorderDele
        // dismiss(animated: true, completion: nil)
         
         
-        
-        
         if audioRecorder?.isRecording == true {
             audioRecorder?.stop()
         } else {
