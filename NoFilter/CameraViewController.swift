@@ -18,15 +18,17 @@ class CameraViewController: UIViewController {
         self.performSegue(withIdentifier: "logOutSegue", sender: self)
     }
     
-    var postStorageRef: FIRStorageReference!
-    var postDatabaseRef: FIRDatabaseReference!
-    @IBAction func takePhoto(_ sender: Any) {
+    
+    
+    func takePhotoOnLoad(){
         let camera = DKCamera()
+        
         camera.didCancel = { () in
             print("didCancel")
             
-            self.dismiss(animated: true, completion: nil)
+            self.backToHome()
         }
+        
         
         camera.didFinishCapturingImage = {(image: UIImage) in
             print("didFinishCapturingImage")
@@ -39,9 +41,9 @@ class CameraViewController: UIViewController {
             let imageName: String = "\(FIRAuth.auth()?.currentUser?.uid)-\(dateString)"
             
             let uploadImageRef = self.postStorageRef!.child((user?.uid)!).child("\(key).jpg")
-           
+            
             let Timestamp = NSDate().timeIntervalSince1970*1000  //Timestamp
-
+            
             let uploadTask = uploadImageRef.put(data!,metadata:nil, completion: { (metadata,err) in
                 if err != nil {
                     print(err?.localizedDescription)
@@ -69,11 +71,14 @@ class CameraViewController: UIViewController {
                 
             })
             uploadTask.resume()
-            self.dismiss(animated: true, completion: nil)
-          //  self.imageView?.image = image
+            self.backToHome()
         }
-        self.present(camera, animated: true, completion: nil)
-     }
+        self.present(camera, animated: false, completion: nil)
+    }
+    
+    var postStorageRef: FIRStorageReference!
+    var postDatabaseRef: FIRDatabaseReference!
+    @IBAction func takePhoto(_ sender: Any) {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,11 +88,22 @@ class CameraViewController: UIViewController {
         let dataRef = FIRDatabase.database().reference()
         postDatabaseRef = dataRef.child("posts")
         // Do any additional setup after loading the view.
+        takePhotoOnLoad()
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        takePhotoOnLoad()
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func backToHome(){
+        self.dismiss(animated: false, completion: nil)
+        tabBarController?.selectedIndex = 0
     }
     
 

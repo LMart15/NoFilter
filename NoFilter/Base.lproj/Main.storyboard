@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RUa-fa-UmN">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RUa-fa-UmN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -246,7 +246,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="343"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CvU-va-R0X" id="gLz-5s-WwE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="343"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="342"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8B-QB-wnm">
@@ -550,7 +550,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BEY-XQ-g3S" id="MX1-UM-LkC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyk-T2-Or8">
@@ -752,54 +752,6 @@
         <scene sceneID="cQ0-yN-jVu">
             <objects>
                 <viewController title="CameraView" id="h6v-hO-kBi" customClass="CameraViewController" customModule="NoFilter" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pqo-d3-wzt"/>
-                        <viewControllerLayoutGuide type="bottom" id="2EG-dg-cuy"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XbY-AX-NYF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaM-h2-A9y">
-                                <rect key="frame" x="33" y="278" width="308" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="LpU-s9-7v2"/>
-                                </constraints>
-                                <state key="normal" title="Take Photo" image="take">
-                                    <color key="titleColor" red="0.032309740781784058" green="0.96193677186965942" blue="0.18426105380058289" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <state key="highlighted" title="ghghgh" backgroundImage="take">
-                                    <color key="titleColor" red="0.12178195267915726" green="0.99380499124526978" blue="0.010591557249426842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="takePhoto:" destination="h6v-hO-kBi" eventType="touchUpInside" id="cSf-6b-s1O"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n26-ik-oHY">
-                                <rect key="frame" x="125" y="375" width="124" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="124" id="zuo-Ol-LYT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Logout">
-                                    <color key="titleColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="logOut:" destination="h6v-hO-kBi" eventType="touchUpInside" id="NTJ-c2-SbL"/>
-                                    <segue destination="RUa-fa-UmN" kind="show" identifier="logOutSegue" id="W0a-fv-ySY"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.090196078431372548" green="0.69803921568627447" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="UaM-h2-A9y" firstAttribute="centerX" secondItem="n26-ik-oHY" secondAttribute="centerX" id="Dnz-qy-e9d"/>
-                            <constraint firstItem="UaM-h2-A9y" firstAttribute="centerX" secondItem="XbY-AX-NYF" secondAttribute="centerX" id="LQT-iE-ut3"/>
-                            <constraint firstItem="UaM-h2-A9y" firstAttribute="leading" secondItem="XbY-AX-NYF" secondAttribute="leadingMargin" constant="17" id="N13-OQ-6ZC"/>
-                            <constraint firstItem="2EG-dg-cuy" firstAttribute="top" secondItem="n26-ik-oHY" secondAttribute="bottom" constant="211" id="mnH-6W-KZ2"/>
-                            <constraint firstItem="n26-ik-oHY" firstAttribute="top" secondItem="UaM-h2-A9y" secondAttribute="bottom" constant="37" id="qkA-IS-o19"/>
-                            <constraint firstItem="UaM-h2-A9y" firstAttribute="top" secondItem="pqo-d3-wzt" secondAttribute="bottom" constant="214" id="v7o-uO-Bvc"/>
-                        </constraints>
-                    </view>
                     <tabBarItem key="tabBarItem" title="Camera" image="camera-icon" id="0Ho-QJ-mbr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVg-Eg-hf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -880,7 +832,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="inb-4Y-sKI" id="BTW-mB-LCF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pMs-GT-TCq">
@@ -976,7 +928,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D75-tQ-Kng" id="N2c-SQ-TGT">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1487231024_human" translatesAutoresizingMaskIntoConstraints="NO" id="YmR-0r-kY7">
@@ -1113,7 +1065,6 @@
         <image name="sendTo" width="273" height="256"/>
         <image name="settings-icon" width="30" height="30"/>
         <image name="signup" width="872" height="187"/>
-        <image name="take" width="872" height="187"/>
         <image name="unnamed" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
