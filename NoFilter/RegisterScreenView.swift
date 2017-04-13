@@ -12,6 +12,7 @@ import FirebaseDatabase
 
 class RegisterScreenView: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var fullname: UITextField!
@@ -21,15 +22,98 @@ class RegisterScreenView: UIViewController,UITextFieldDelegate,UIImagePickerCont
     @IBOutlet weak var confirmpassword: UITextField!
     @IBOutlet weak var phonenumber: UITextField!
     
+    var scrollViewHeight: CGFloat = 0
+    var keyboard = CGRect()
+    
     let picker = UIImagePickerController()
   //  let userDatabaseRef =
     var userStorage: FIRStorageReference!
     var userRef: FIRDatabaseReference!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+        //get scrollview height of container
+        scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        scrollView.contentSize.height = self.view.frame.height
+        scrollViewHeight = scrollView.frame.size.height
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: .UIKeyboardWillShow , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: .UIKeyboardWillHide , object: nil)
+        
+        let hideOnTap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardTap))
+        hideOnTap.numberOfTapsRequired = 1
+        self.view.isUserInteractionEnabled = true
+        self.view.addGestureRecognizer(hideOnTap)
+        
+        //Round image
+        profileImg.layer.cornerRadius = profileImg.frame.size.width / 2
+        profileImg.clipsToBounds = true
+        
+        let profileOnTap = UITapGestureRecognizer(target: self, action: #selector(selectProfilePicOnTap))
+        profileOnTap.numberOfTapsRequired = 1
+        profileImg.isUserInteractionEnabled = true
+        profileImg.addGestureRecognizer(profileOnTap)
+  
+        
+        picker.delegate = self
+        let storage = FIRStorage.storage().reference(forURL:"gs://projectreall-35e59.appspot.com")
+        userStorage = storage.child("users")
+        userRef = FIRDatabase.database().reference()
+        
+        fullname.delegate = self
+        email.delegate = self
+        username.delegate = self
+        password.delegate = self
+        confirmpassword.delegate = self
+        phonenumber.delegate = self
+        
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false;
+    }
+    
+    func hideKeyboardTap(recognizer: UITapGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
+    func showKeyboard(notification:NSNotification){
+        
+        keyboard = ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue)!
+        
+        UIView.animate(withDuration: 0.4) {
+            self.scrollView.frame.size.height = self.scrollViewHeight - self.keyboard.height
+        }
+    }
+    
+    func hideKeyboard(notification:NSNotification){
+        
+        UIView.animate(withDuration: 0.4) {
+            self.scrollView.frame.size.height = self.view.frame.height
+        }
+    }
+    
+    
     @IBAction func AddPhoto(_ sender: Any) {
-        picker.allowsEditing = false
-        picker.sourceType = .photoLibrary
-        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(picker, animated: true, completion: nil)
+        selectProfile()
+    }
+    
+    func selectProfilePicOnTap(recognizer: UITapGestureRecognizer){
+        
+        selectProfile()
+        
+    }
+    
+    func selectProfile(){
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+        
     }
   /*  @IBAction func done(_ sender: Any) {
         guard fullname.text != "", email.text != "",password.text != "" ,confirmpassword.text != "", phonenumber.text != "", username.text != ""else { return }
@@ -100,34 +184,6 @@ class RegisterScreenView: UIViewController,UITextFieldDelegate,UIImagePickerCont
         }
         
     }   */
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-       // profileImg.layer.cornerRadius = 25;
-       // profileImg.layer.masksToBounds = true
-     //   self.navigationController?.navigationBar.isHidden = false;
-        picker.delegate = self
-        let storage = FIRStorage.storage().reference(forURL:"gs://projectreall-35e59.appspot.com")
-        userStorage = storage.child("users")
-        userRef = FIRDatabase.database().reference()
-        
-        fullname.delegate = self
-        email.delegate = self
-         username.delegate = self
-         password.delegate = self
-        confirmpassword.delegate = self
-        phonenumber.delegate = self
-
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false;
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -157,6 +213,9 @@ class RegisterScreenView: UIViewController,UITextFieldDelegate,UIImagePickerCont
     {
         textField.resignFirstResponder()
         return true
+    }
+    @IBAction func cancelBtnAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func signUpBtnAction(_ sender: UIButton) {
@@ -220,6 +279,7 @@ class RegisterScreenView: UIViewController,UITextFieldDelegate,UIImagePickerCont
                             
                         })
                         uploadTask.resume()
+                        //self.dismiss(animated: true, completion: nil)
                         self.performSegue(withIdentifier: "signupToHome", sender: self)
                     }
                 }
