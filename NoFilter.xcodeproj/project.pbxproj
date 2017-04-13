@@ -35,6 +35,7 @@
 		A0C815031E8C9076001C99E8 /* ImagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C815011E8C9076001C99E8 /* ImagesTableViewCell.swift */; };
 		A0C815041E8C9076001C99E8 /* ImagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C815021E8C9076001C99E8 /* ImagesTableViewController.swift */; };
 		CD2F066A4DB9C2E030746996 /* Pods_NoFilter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7874A03546F128FF4319FD2E /* Pods_NoFilter.framework */; };
+		FD34A8921E9F14F600C07093 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD34A8911E9F14F600C07093 /* ProfileViewController.swift */; };
 		FD40B4601E4BFFF400AFD61C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD40B45F1E4BFFF400AFD61C /* GoogleService-Info.plist */; };
 		FD6B350D1E55380200475370 /* RegisterScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6B350C1E55380200475370 /* RegisterScreenView.swift */; };
 		FDA677441E7A01CE005D04FC /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA677431E7A01CE005D04FC /* CameraViewController.swift */; };
@@ -75,6 +76,7 @@
 		7874A03546F128FF4319FD2E /* Pods_NoFilter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoFilter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0C815011E8C9076001C99E8 /* ImagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesTableViewCell.swift; sourceTree = "<group>"; };
 		A0C815021E8C9076001C99E8 /* ImagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesTableViewController.swift; sourceTree = "<group>"; };
+		FD34A8911E9F14F600C07093 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FD40B45F1E4BFFF400AFD61C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD6B350C1E55380200475370 /* RegisterScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterScreenView.swift; sourceTree = "<group>"; };
 		FDA677431E7A01CE005D04FC /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				10B889FC1E91696D0054CA29 /* AudioRecorder.swift */,
 				10D52CE31E8B832E009269FE /* CommentsViewCell.swift */,
 				102C54B51E9425310070AD85 /* FloatingBtnViewController.swift */,
+				FD34A8911E9F14F600C07093 /* ProfileViewController.swift */,
 			);
 			path = NoFilter;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				FDA677441E7A01CE005D04FC /* CameraViewController.swift in Sources */,
 				10D52CE01E8B4EA2009269FE /* LoginViewController.swift in Sources */,
 				104FA9661E819AB000E2AB13 /* post.swift in Sources */,
+				FD34A8921E9F14F600C07093 /* ProfileViewController.swift in Sources */,
 				1832BE4E1E6A36920012C882 /* SecondViewController.swift in Sources */,
 				1832BE4D1E6A36920012C882 /* FirstViewController.swift in Sources */,
 			);
