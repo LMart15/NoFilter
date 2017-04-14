@@ -761,7 +761,7 @@
         <!--Profile-->
         <scene sceneID="iWk-8T-fpt">
             <objects>
-                <viewController title="Profile" id="J8m-E5-Rs6" sceneMemberID="viewController">
+                <viewController title="Profile" id="J8m-E5-Rs6" customClass="ProfileViewController" customModule="NoFilter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U2J-EN-w8b"/>
                         <viewControllerLayoutGuide type="bottom" id="ZBp-0w-i3r"/>
@@ -771,16 +771,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klm-dJ-ntk">
-                                <rect key="frame" x="150" y="282" width="75" height="30"/>
+                                <rect key="frame" x="150" y="564" width="75" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Fetch User">
                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="fetchUser:" destination="J8m-E5-Rs6" eventType="touchUpInside" id="tY0-0v-xrh"/>
+                                </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sip-X8-F9G">
+                                <rect key="frame" x="0.0" y="64" width="375" height="144"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings-icon" id="3oz-ik-Rv8"/>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjF-xT-fiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

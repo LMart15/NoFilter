@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import Firebase
 
 class ProfileViewController: UIViewController {
 
+     let databaseRef = FIRDatabase.database().reference()
+    
+    @IBAction func fetchUser(_ sender: UIButton) {
+        fetchUserID(uId: (FIRAuth.auth()?.currentUser?.uid)!)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,14 +29,17 @@ class ProfileViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func fetchUserID(uId: String) {
+        print(uId)
+        databaseRef.child("users").child(uId).observeSingleEvent(of: .value, with: {
+            snapshot in
+            if snapshot.value is NSNull {
+                print("Error")
+            }else {
+                let snapDic = snapshot.value as? NSDictionary
+                print(snapDic!)
+            }
+            
+        })
     }
-    */
-
 }
