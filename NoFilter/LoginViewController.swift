@@ -77,6 +77,8 @@ class LoginViewController: UIViewController,FBSDKLoginButtonDelegate,UITextField
                     {
                         self.getFBUserData()
                         fbLoginManager.logOut()
+                        
+                        self.performSegue(withIdentifier: "directSign", sender: nil)
                     }
                 }
             }
