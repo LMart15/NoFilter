@@ -13,7 +13,9 @@ class SettingsController: UIViewController {
     
     @IBAction func logoutAction(_ sender: Any) {
         try! FIRAuth.auth()?.signOut()
-        self.performSegue(withIdentifier: "logOutSegue", sender: self)
+        
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        //self.performSegue(withIdentifier: "logOutSegue", sender: self)
     }
     
     override func viewDidLoad() {
