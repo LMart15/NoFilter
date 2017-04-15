@@ -12,11 +12,14 @@ class CommentsViewCell: UITableViewCell {
 
     @IBOutlet weak var userWhoCommented: UILabel!
     @IBOutlet weak var comments: UILabel!
+    
+    @IBOutlet weak var playBtn: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+   
    
 
 }

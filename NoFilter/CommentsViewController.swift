@@ -18,7 +18,7 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var userCellComments = UserComments()
     var commentorInfo = UserProfile()
             //audio file url
-   
+      var status=0
     //var myAudioplayer:AVAudioPlayer!
     var myAudioplayer:AVPlayer! // Changed
     
@@ -48,7 +48,7 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         let userName = cell.viewWithTag(1) as! UILabel
         let commentViewer = cell.viewWithTag(2) as! UILabel
         let userImage = cell.viewWithTag(3) as! UIButton
-        let audioPlay = cell.viewWithTag(4) as! UIButton
+        let audioPlay = cell.playBtn as! UIButton
         
         userCellComments=uCommentsList[indexPath.row]
         audioPlay.tag = indexPath.row // Added
@@ -167,32 +167,72 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     
     @IBAction func btnPlayAudio(_ sender: UIButton) {
+         toggle(button: sender, onImage: #imageLiteral(resourceName: "playB"), ofImage: #imageLiteral(resourceName: "stopB"))
+       
+         let url = uCommentsList[sender.tag].comment
+        if(sender.currentImage==#imageLiteral(resourceName: "playB"))
+        {
+                 myAudioplayer.rate=0.0
+                sender.setImage(#imageLiteral(resourceName: "playB"), for: .normal)
         
-        
-        let url = uCommentsList[sender.tag].comment
-        
-        FIRStorage.storage().reference(forURL: url as! String).metadata { (metadata, error) in
-            if error != nil{
-                print("error getting metadata")
-            } else {
-                let downloadUrl = metadata?.downloadURL()
-                print(downloadUrl!)
+               }
+       else if(sender.currentImage==#imageLiteral(resourceName: "stopB"))
+        {
+            
+            
+            FIRStorage.storage().reference(forURL: url as! String).metadata { (metadata, error) in
+                if error != nil{
+                    print("error getting metadata")
+                } else {
+                    let downloadUrl = metadata?.downloadURL()
+                    print(downloadUrl!)
+                    
+                    if downloadUrl != nil{
+                        
+                        self.myAudioplayer = AVPlayer(url: downloadUrl!)
+                        self.myAudioplayer.play()
+                        
+                        
+                        print("downloadUrl obtained and set")
+                    }
                 
-                if downloadUrl != nil{
-                    
-                    self.myAudioplayer = AVPlayer(url: downloadUrl!)
-                    self.myAudioplayer.play()
-                    
-                    
-                    print("downloadUrl obtained and set")
+                   
                 }
             }
         }
         
         
     }
+    
+    
+    func toggle(button:UIButton,onImage:UIImage,ofImage:UIImage)
+    {
+        if(button.currentImage==ofImage)
+        {
+            button.transform = CGAffineTransform(rotationAngle: 45)
+            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 9, options: .allowUserInteraction, animations:
+                {
+                    button.transform=CGAffineTransform.identity
+            }, completion: nil)
+            button.setImage(onImage, for: .normal)
+            
+        }
+        else{
+            button.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 9, options: .allowUserInteraction, animations:
+                {
+                    button.transform=CGAffineTransform.identity
+            }, completion: nil)
+            button.setImage(ofImage, for: .normal)
+        }
+    }
 
 
+  func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
+        //You can stop the audio
+        print("finished!")
+        
+    }
     
 }
 

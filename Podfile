@@ -13,5 +13,9 @@ target 'NoFilter' do
   pod 'Firebase/Storage'
   pod ‘DKCamera’
   pod 'KCFloatingActionButton'
-  
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
+  pod 'FBSDKLoginKit'
+
 end
