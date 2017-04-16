@@ -7,12 +7,13 @@
 //
 
 import UIKit
-import Firebase 
-
-class LoginViewController: UIViewController, UITextFieldDelegate {
+import Firebase
+import FBSDKLoginKit
+class LoginViewController: UIViewController,FBSDKLoginButtonDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var username_label: UITextField!
     
+    @IBOutlet weak var fbLoginBtn: FBSDKLoginButton!
     @IBOutlet weak var password: UITextField!
     @IBAction func signIn(_ sender: Any) {
         guard username_label.text != "", password.text != "" else {
@@ -36,7 +37,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
       //  self.navigationController?.navigationBar.isHidden = true;
         // Do any additional setup after loading the view.
         
-        
+         fbLoginBtn.delegate=self
         username_label.delegate = self
         password.delegate = self
         if FIRAuth.auth()?.currentUser != nil {
@@ -44,6 +45,81 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.performSegue(withIdentifier: "directSign", sender: nil)
         }
     }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if (error != nil){
+            print(error.localizedDescription)
+            return
+        }
+        
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        FIRAuth.auth()?.signIn(with: credential, completion: {  (user,error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                return
+            }
+           // self.getFBUserData()
+            print("User logged In with fb...")
+            
+            //fffffbbbbbb
+         
+            
+            
+        })
+        
+        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+        fbLoginManager.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
+            if (error == nil){
+                let fbloginresult : FBSDKLoginManagerLoginResult = result!
+                if fbloginresult.grantedPermissions != nil {
+                    if(fbloginresult.grantedPermissions.contains("email"))
+                    {
+                        self.getFBUserData()
+                        fbLoginManager.logOut()
+                        
+                        self.performSegue(withIdentifier: "directSign", sender: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func fbLoginBtnAction(_ sender: Any) {
+        print("errors>>>>")
+      
+        
+    }
+    
+    func getFBUserData(){
+        
+        print("errors>>>>")
+        if((FBSDKAccessToken.current()) != nil){
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
+                if (error == nil){
+                    //  self.dict = result as! [String : AnyObject]
+                    print("result>>>>>>>>\(result!)")
+                    //print(self.dict)
+                }
+                else{
+                    print("errors>>>>")
+                }
+            })
+        }
+    }
+
+    //
+    
+    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
+        return true
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+        try! FIRAuth.auth()!.signOut()
+        print("user logged out!!")
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
