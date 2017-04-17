@@ -48,7 +48,7 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         let userName = cell.viewWithTag(1) as! UILabel
         let commentViewer = cell.viewWithTag(2) as! UILabel
         let userImage = cell.viewWithTag(3) as! UIButton
-        let audioPlay = cell.viewWithTag(4) as! UIButton
+        let audioPlay = cell.playBtn as! UIButton
         
         userCellComments=uCommentsList[indexPath.row]
         audioPlay.tag = indexPath.row // Added

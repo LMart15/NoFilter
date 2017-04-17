@@ -15,6 +15,11 @@ class ImageTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var addAsFriend: UIButton!
+    @IBOutlet weak var rejectBtn: UIButton!
+    @IBOutlet weak var acceptBtn: UIButton!
+    
+    
+    
     var uId:String!
     let userFriendRef = FIRDatabase.database().reference().child("users")
     override func awakeFromNib() {
