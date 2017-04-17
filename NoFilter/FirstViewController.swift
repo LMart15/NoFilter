@@ -54,7 +54,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     //  fetchPostedData()
         fetchUser()
         fetchPosts()
-        
+//
         //status things
         
          editStatusArea.isEnabled=false
@@ -64,7 +64,8 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+   
+    
    func fetchPostedData()
    {
     ref.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: {snapshot in

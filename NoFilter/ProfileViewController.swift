@@ -96,7 +96,7 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UI
         userStorage = storage.child("users")
         userRef = FIRDatabase.database().reference()
         
-        fetchUser() 
+        fetchUser()
     }
     
     override func viewDidAppear(_ animated: Bool) {
