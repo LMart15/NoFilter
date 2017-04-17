@@ -51,64 +51,10 @@ class TableViewCell: UITableViewCell {
         
         let ref=FIRDatabase.database().reference()
         let keyToPost = ref.child("posts").childByAutoId().key
-     //   ref.child("posts").child("postId").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-    /*        if let post=snapshot.value as? [String:AnyObject]
-            {
-                let updateLikes:[String:Any] = ["peopleWhoLike/\(keyToPost)":FIRAuth.auth()!.currentUser?.uid]
-                ref.child("posts").child(self.postId).updateChildValues(updateLikes, withCompletionBlock : {
-                    (error,reff) in
-                  //  if(error==nil)
-                  //  {
-                        ref.child("posts").child(self.postId).observeSingleEvent(of: .value, with: { (snap) in
-                            if let properties=snap.value as? [String:AnyObject]{
-                                
-                                if let likess=properties["peopleWhoLike"] as? [String:AnyObject]
-                                {
-                                    let count=likess.count
-                                    self.likes.text=String(count)
-                                    let update=["likes":count]
-                                    ref.child("posts").child(self.postId).updateChildValues(update)
-                                }
-                                
-                                
-                            }
-                        })
-                   // }
-                })
-            }
-        })
-        ref.removeAllObservers()  */
     }
     
     
-    /*
-    @IBAction func voiceButtonChange(_ sender: UIButton) {
-        toggle(button: sender, onImage: #imageLiteral(resourceName: "voicep"), ofImage: #imageLiteral(resourceName: "voiceb"))
-        
-    }
-    
-    func toggle(button:UIButton,onImage:UIImage,ofImage:UIImage)
-    {
-        if(button.currentImage==ofImage)
-        {
-            button.transform = CGAffineTransform(rotationAngle: 45)
-            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 9, options: .allowUserInteraction, animations:
-                {
-                    button.transform=CGAffineTransform.identity
-            }, completion: nil)
-             button.setImage(onImage, for: .normal)
-        }
-        else{
-            button.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 9, options: .allowUserInteraction, animations:
-                {
-                    button.transform=CGAffineTransform.identity
-            }, completion: nil)
-            button.setImage(ofImage, for: .normal)
-        }
-    }
-    */
+   
     //Like Button functionality
     @IBAction func onClickLikeB(_ sender: UIButton) {
       

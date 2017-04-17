@@ -15,22 +15,18 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var suggestedFriendsList = [UserProfile]()
     var myFriendsList = [UserProfile]()
     var friendRequestsList = [UserProfile]()
-    
-    let myFriendDemoString:[String] = ["My Chingu 1"," My Chingu 2","My Chingu 3"]
-    let friendRequestString:[String] = ["New Chingu 1"," New Chingu 2","New Chingu 3"]
-    
-   
+    var suggestedFriends = [String]()
+
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        print("fetching useres")
+        //print("fetching useres")
         fetchSuggestFriends();
-        fetchmyFriends();
         fetchFriendRequests();
-       
+        fetchmyFriends();
     }
     
    
@@ -58,12 +54,13 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
 
         // Instantiate a cell
        let cell=tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ImageTableViewCell
-     
-        let user = cell.viewWithTag(2) as! UILabel
-        let imageView = cell.viewWithTag(1) as! UIImageView
 
         switch (segmentedControl.selectedSegmentIndex) {
         case 0:
+           
+            let user = cell.viewWithTag(2) as! UILabel
+            let imageView = cell.viewWithTag(1) as! UIImageView
+            
             cell.addAsFriend.isHidden = false
             cell.rejectBtn.isHidden = true
             cell.acceptBtn.isHidden = true
@@ -80,7 +77,10 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             
             break
         case 1:
-           
+
+            let user = cell.viewWithTag(2) as! UILabel
+            let imageView = cell.viewWithTag(1) as! UIImageView
+            
             cell.rejectBtn.isHidden = false
             cell.acceptBtn.isHidden = false
             cell.addAsFriend.isHidden = true
@@ -98,6 +98,9 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             cell.uId = self.friendRequestsList[indexPath.row].uId
             break
         case 2:
+            
+            let user = cell.viewWithTag(2) as! UILabel
+            let imageView = cell.viewWithTag(1) as! UIImageView
             
             cell.addAsFriend.isHidden = true
             cell.rejectBtn.isHidden = true
@@ -122,7 +125,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     @IBAction func ItemSelected(_ sender: Any) {
-        tableView.reloadData()
+            self.tableView.reloadData()
     }
     
 
@@ -130,12 +133,63 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     {
         var suggestedFriendProfile = UserProfile()
        
-//       self.users.removeAll()
+        self.suggestedFriendsList.removeAll()
+        self.myFriendsList.removeAll()
+        self.friendRequestsList.removeAll()
+        
+    FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("myFriends").observe(.value, with:
+            {(mysnapshot) in
+                
+                if let friend = mysnapshot.value as? [String:AnyObject]
+                {
+                    for friendid in friend
+                    {
+                        self.suggestedFriends.append(friendid.key)
+                        print("friendid",friendid.key)
+                    }
+                }
+//                print("FriendsUser",self.suggestedFriends)
+        })
+        
+        FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("friendRequests").observe(.value, with:
+            {(mysnapshot) in
+                
+                if let friend = mysnapshot.value as? [String:AnyObject]
+                {
+                    for friendid in friend
+                    {
+                        self.suggestedFriends.append(friendid.key)
+//                        print("friendid",friendid.key)
+                    }
+                }
+//                print("FriendsUser",self.suggestedFriends)
+        })
+        
+        FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("pendingRequests").observe(.value, with:
+            {(mysnapshot) in
+                
+                if let friend = mysnapshot.value as? [String:AnyObject]
+                {
+                    for friendid in friend
+                    {
+                        self.suggestedFriends.append(friendid.key)
+//                        print("friendid",friendid.key)
+                    }
+                }
+//                print("FriendsUser",self.suggestedFriends)
+        })
+        
+
         FIRDatabase.database().reference().child("users").observe(.value, with: { (snapshot) in
             for suggestedfriendSnap in snapshot.children{
-                    
+                
+                if(self.suggestedFriends.contains((suggestedfriendSnap as! FIRDataSnapshot).key))
+                {
+//                    print("already friends",(suggestedfriendSnap as! FIRDataSnapshot).key)
+                }
+                else{
                 if let suggestedfriend = (suggestedfriendSnap as! FIRDataSnapshot).value as? [String:AnyObject]{
-                        
+                    
                     suggestedFriendProfile.fullName = suggestedfriend["fullName"] as! String
                     if((suggestedfriend["profileImage"]) != nil){
                         suggestedFriendProfile.profileImage = suggestedfriend["profileImage"] as! String
@@ -146,26 +200,28 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
                     }
                     self.suggestedFriendsList.append(suggestedFriendProfile)
                 }
+                }
             }
-        })
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        } , withCancel: nil)
     }
     
     func fetchFriendRequests() {
         
         var friendRequestProfile = UserProfile()
+    FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("friendRequests").observe(.value, with: {(friendsReqSnapshot) in
+            
+            self.myFriendsList.removeAll()
+            self.friendRequestsList.removeAll()
         
-        //self.users.removeAll()
-    FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("friendRequests").observe(.value, with:
-        {(friendsReqSnapshot) in
-
              if let friendReq = friendsReqSnapshot.value as? [String:AnyObject]
              {
                 for reqFriendId in friendReq
                 {
              
-                    print("friend number",reqFriendId.key)
-                    if(reqFriendId.key != nil)
-                    {
                     FIRDatabase.database().reference().child("users").child(reqFriendId.key).observe(.value, with:
                         { (reqFriendProfileSnapshot) in
                         
@@ -180,10 +236,15 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
                                 if((reqFriend["uId"]) != nil){
                                     friendRequestProfile.uId = reqFriend["uId"] as! String
                                 }
+                                print("Friends Request",friendRequestProfile.uId )
                                 self.friendRequestsList.append(friendRequestProfile)
                             }
-                        })
-                    }
+//                            DispatchQueue.main.async {
+//                                //self.tableView.reloadData()
+//                            }
+//                            
+//                    } , withCancel: nil)
+                    })
                 }
             }
         })
@@ -192,25 +253,21 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func fetchmyFriends() {
         
         var myFriendProfile = UserProfile()
-        
-        //self.users.removeAll()
-        FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("friendRequests").observe(.value, with:
+        FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("myFriends").observe(.value, with:
             {(mysnapshot) in
+                
+                self.myFriendsList.removeAll()
+                self.friendRequestsList.removeAll()
                 
                 if let friend = mysnapshot.value as? [String:AnyObject]
                 {
                     for friendid in friend
                     {
-                        
-                        print("friend number",friendid.key)
-                        if(friendid.key != nil)
-                        {
                             FIRDatabase.database().reference().child("users").child(friendid.key).observe(.value, with:
                                 { (myfriendsnapshot) in
                                     
                                     if let myfriend = myfriendsnapshot.value as? [String:AnyObject]
                                     {
-                                        
                                         myFriendProfile.fullName = myfriend["fullName"] as! String
                                         if((myfriend["profileImage"]) != nil){
                                             myFriendProfile.profileImage = myfriend["profileImage"] as! String
@@ -219,13 +276,28 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
                                         if((myfriend["uId"]) != nil){
                                             myFriendProfile.uId = myfriend["uId"] as! String
                                         }
+                                        print("My Friends",myFriendProfile.uId )
                                         self.myFriendsList.append(myFriendProfile)
                                     }
-                            })
-                        }
+//                                    
+//                                    DispatchQueue.main.async {
+//                                        self.tableView.reloadData()
+//                                    }
+//                                    
+//                            } , withCancel: nil)
+                        })
                     }
                 }
         })
+        
+    }
+
+    func updateTableView() {
+    
+//        self.friendRequestsList.removeAll()
+//        self.suggestedFriendsList.removeAll()
+//        self.myFriendsList.removeAll()
+        self.tableView.reloadData()
         
     }
 

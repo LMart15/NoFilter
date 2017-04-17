@@ -10,8 +10,6 @@
 		102C54B61E9425310070AD85 /* FloatingBtnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102C54B51E9425310070AD85 /* FloatingBtnViewController.swift */; };
 		102C54B91E9595500070AD85 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102C54B71E9595500070AD85 /* FriendsViewController.swift */; };
 		102C54BA1E9595500070AD85 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102C54B81E9595500070AD85 /* ImageTableViewCell.swift */; };
-		104FA9641E819A5800E2AB13 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FA9631E819A5800E2AB13 /* user.swift */; };
-		104FA9661E819AB000E2AB13 /* post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FA9651E819AB000E2AB13 /* post.swift */; };
 		104FA9681E819B7500E2AB13 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FA9671E819B7500E2AB13 /* DataViewController.swift */; };
 		10B889FD1E91696D0054CA29 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B889FC1E91696D0054CA29 /* AudioRecorder.swift */; };
 		10D52CD01E8821AC009269FE /* TextCommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D52CCF1E8821AC009269FE /* TextCommentsController.swift */; };
@@ -27,6 +25,8 @@
 		1832BE4D1E6A36920012C882 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4A1E6A36920012C882 /* FirstViewController.swift */; };
 		1832BE4E1E6A36920012C882 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4B1E6A36920012C882 /* SecondViewController.swift */; };
 		1832BE4F1E6A36920012C882 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4C1E6A36920012C882 /* TableViewCell.swift */; };
+		22FDBF9F1EA5445600725166 /* post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FDBF9D1EA5445600725166 /* post.swift */; };
+		22FDBFA01EA5445600725166 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FDBF9E1EA5445600725166 /* user.swift */; };
 		55C8DE201E4BFCDB00AB98DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C8DE1F1E4BFCDB00AB98DD /* AppDelegate.swift */; };
 		55C8DE221E4BFCDC00AB98DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C8DE211E4BFCDC00AB98DD /* ViewController.swift */; };
 		55C8DE251E4BFCDC00AB98DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C8DE231E4BFCDC00AB98DD /* Main.storyboard */; };
@@ -46,8 +46,6 @@
 		102C54B51E9425310070AD85 /* FloatingBtnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingBtnViewController.swift; sourceTree = "<group>"; };
 		102C54B71E9595500070AD85 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		102C54B81E9595500070AD85 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
-		104FA9631E819A5800E2AB13 /* user.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
-		104FA9651E819AB000E2AB13 /* post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = post.swift; sourceTree = "<group>"; };
 		104FA9671E819B7500E2AB13 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		1053F7781E80B9A40093BD1A /* DKCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DKCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		107DBF121E9AE24E00203582 /* audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = audio.mp3; sourceTree = "<group>"; };
@@ -65,6 +63,8 @@
 		1832BE4A1E6A36920012C882 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		1832BE4B1E6A36920012C882 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		1832BE4C1E6A36920012C882 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		22FDBF9D1EA5445600725166 /* post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = post.swift; sourceTree = "<group>"; };
+		22FDBF9E1EA5445600725166 /* user.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		55C8DE1C1E4BFCDB00AB98DD /* NoFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55C8DE1F1E4BFCDB00AB98DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55C8DE211E4BFCDC00AB98DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -140,8 +140,6 @@
 				55C8DE2B1E4BFCDD00AB98DD /* Info.plist */,
 				FD6B350C1E55380200475370 /* RegisterScreenView.swift */,
 				FDA677431E7A01CE005D04FC /* CameraViewController.swift */,
-				104FA9631E819A5800E2AB13 /* user.swift */,
-				104FA9651E819AB000E2AB13 /* post.swift */,
 				102C54B71E9595500070AD85 /* FriendsViewController.swift */,
 				102C54B81E9595500070AD85 /* ImageTableViewCell.swift */,
 				104FA9671E819B7500E2AB13 /* DataViewController.swift */,
@@ -150,6 +148,8 @@
 				10D52CD41E8841E8009269FE /* TxtCommentCellTableViewCell.xib */,
 				10D52CD71E884206009269FE /* AudioCommentCell.swift */,
 				10D52CD81E884206009269FE /* AudioCommentCell.xib */,
+				22FDBF9D1EA5445600725166 /* post.swift */,
+				22FDBF9E1EA5445600725166 /* user.swift */,
 				10D52CDB1E897AB9009269FE /* TxtComntHandler.swift */,
 				10D52CDD1E8AD97C009269FE /* TempViewController.swift */,
 				10D52CDF1E8B4EA2009269FE /* LoginViewController.swift */,
@@ -300,6 +300,7 @@
 				10D52CD01E8821AC009269FE /* TextCommentsController.swift in Sources */,
 				10D52CDC1E897AB9009269FE /* TxtComntHandler.swift in Sources */,
 				55C8DE221E4BFCDC00AB98DD /* ViewController.swift in Sources */,
+				22FDBF9F1EA5445600725166 /* post.swift in Sources */,
 				10D52CE21E8B8047009269FE /* CommentsViewController.swift in Sources */,
 				10D52CD91E884206009269FE /* AudioCommentCell.swift in Sources */,
 				A0C815031E8C9076001C99E8 /* ImagesTableViewCell.swift in Sources */,
@@ -311,14 +312,13 @@
 				FD6B350D1E55380200475370 /* RegisterScreenView.swift in Sources */,
 				10D52CDE1E8AD97C009269FE /* TempViewController.swift in Sources */,
 				A0C815041E8C9076001C99E8 /* ImagesTableViewController.swift in Sources */,
+				22FDBFA01EA5445600725166 /* user.swift in Sources */,
 				1832BE4F1E6A36920012C882 /* TableViewCell.swift in Sources */,
-				104FA9641E819A5800E2AB13 /* user.swift in Sources */,
 				102C54B91E9595500070AD85 /* FriendsViewController.swift in Sources */,
 				10D52CE41E8B832E009269FE /* CommentsViewCell.swift in Sources */,
 				10B889FD1E91696D0054CA29 /* AudioRecorder.swift in Sources */,
 				FDA677441E7A01CE005D04FC /* CameraViewController.swift in Sources */,
 				10D52CE01E8B4EA2009269FE /* LoginViewController.swift in Sources */,
-				104FA9661E819AB000E2AB13 /* post.swift in Sources */,
 				FD34A8921E9F14F600C07093 /* ProfileViewController.swift in Sources */,
 				1832BE4E1E6A36920012C882 /* SecondViewController.swift in Sources */,
 				1832BE4D1E6A36920012C882 /* FirstViewController.swift in Sources */,

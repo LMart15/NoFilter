@@ -123,6 +123,7 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
            
             
             self.postRef.child(self.pid).child("comments").childByAutoId().updateChildValues(values)
+            print("post ID ",self.pid , " values post ID", values)
             //self.list.append(myCommentField.text!)
             //self.tableContent.reloadData()
         }
