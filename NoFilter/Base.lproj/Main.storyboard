@@ -857,7 +857,7 @@
                                 <rect key="frame" x="107" y="72" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="7Yc-NY-mR6">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="7Yc-NY-mR6">
                                 <rect key="frame" x="8" y="398" width="359" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -889,10 +889,12 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="email" destination="7Yc-NY-mR6" id="GlP-VP-BHi"/>
                         <outlet property="fullName" destination="pvS-Zy-egb" id="eTM-qC-DCH"/>
                         <outlet property="phoneNumber" destination="PHV-FL-zwK" id="6yj-3c-hra"/>
+                        <outlet property="profileImg" destination="hSD-Jp-fYF" id="juK-40-myv"/>
                         <outlet property="status" destination="PCE-98-G3E" id="7ml-je-aOC"/>
+                        <outlet property="userName" destination="7Yc-NY-mR6" id="MUW-Pm-Uv2"/>
+                        <segue destination="fXm-CT-oYd" kind="presentation" identifier="toHome" id="xLr-bf-xRS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjF-xT-fiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1210,7 +1212,7 @@
         <image name="unnamed" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5MM-aZ-zxW"/>
+        <segue reference="xLr-bf-xRS"/>
         <segue reference="qDT-AB-lKa"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
