@@ -8,11 +8,13 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
+
 import FBSDKLoginKit
 class LoginViewController: UIViewController,FBSDKLoginButtonDelegate,UITextFieldDelegate {
-
+var dict : [String : AnyObject]!
     @IBOutlet weak var username_label: UITextField!
-    
+    var userRef: FIRDatabaseReference!
     @IBOutlet weak var fbLoginBtn: FBSDKLoginButton!
     @IBOutlet weak var password: UITextField!
     @IBAction func signIn(_ sender: Any) {
@@ -40,10 +42,12 @@ class LoginViewController: UIViewController,FBSDKLoginButtonDelegate,UITextField
          fbLoginBtn.delegate=self
         username_label.delegate = self
         password.delegate = self
+        
         if FIRAuth.auth()?.currentUser != nil {
             print(FIRAuth.auth()?.currentUser?.email)
             self.performSegue(withIdentifier: "directSign", sender: nil)
         }
+         userRef = FIRDatabase.database().reference()
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -59,13 +63,10 @@ class LoginViewController: UIViewController,FBSDKLoginButtonDelegate,UITextField
                 print(error?.localizedDescription)
                 return
             }
-           // self.getFBUserData()
+           self.getFBUserData()
             print("User logged In with fb...")
-            
-            //fffffbbbbbb
-         
-            
-            
+    
+
         })
         
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
@@ -97,9 +98,31 @@ class LoginViewController: UIViewController,FBSDKLoginButtonDelegate,UITextField
         if((FBSDKAccessToken.current()) != nil){
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
                 if (error == nil){
-                    //  self.dict = result as! [String : AnyObject]
-                    print("result>>>>>>>>\(result!)")
-                    //print(self.dict)
+                      self.dict = result as! [String : AnyObject]
+                   
+                    print(self.dict)
+                    let fullName=self.dict["name"] as! NSString
+                    let fbUserID = self.dict["id"] as! NSString
+                    let fbName=self.dict["first_name"] as! NSString
+                   // let fbPicture="http://graph.facebook.com/\(fbUserID)/picture?type=large"
+                    let fbPicture = (self.dict["picture"]!["data"]!! as! [String : AnyObject])["url"]
+                    print("FBUSER pic url>> \(fbPicture)")
+                  //  FIRDatabase.database().reference()
+                    
+                    let currentTime = Date()
+                    let dateFormat = DateFormatter()
+                    dateFormat.timeStyle = .medium
+                    dateFormat.dateStyle = .medium
+                    
+                    let userInfo: [String: Any] = ["uId": FIRAuth.auth()?.currentUser?.uid,
+                                                   "fullName":fullName,
+                                                   "profileImage":fbPicture,
+                                                   "phoneNumber":"",
+                                                   "username":"",
+                                                   "timestamp":dateFormat.string(from: currentTime),
+                                                   "userStatus":"Status"]
+                    
+                   self.userRef.child("users").child((FIRAuth.auth()?.currentUser?.uid)!).setValue(userInfo)
                 }
                 else{
                     print("errors>>>>")

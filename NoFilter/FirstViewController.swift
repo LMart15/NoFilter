@@ -43,9 +43,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var userProfileName: UILabel!
    
     
-    var names=["Haapi","gopi","new"]
-    
-    var images=["best","gh","unn"]
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +73,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             
             if let uid=value["uid"] as? String
             {
+                
                 if uid==FIRAuth.auth()?.currentUser?.uid{
                     
                     self.ref.child("posts").queryOrderedByKey().observeSingleEvent(of: .value, with: {(snap)in
