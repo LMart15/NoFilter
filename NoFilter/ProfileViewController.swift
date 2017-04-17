@@ -14,7 +14,17 @@ class ProfileViewController: UIViewController {
 
      let databaseRef = FIRDatabase.database().reference()
     
+    @IBOutlet weak var fullName: UITextField!
+    @IBOutlet weak var status: UITextField!
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var phoneNumber: UITextField!
   
+    @IBAction func AddPhoto(_ sender: UIButton) {
+        
+    }
+    @IBAction func Done(_ sender: Any) {
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
