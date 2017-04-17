@@ -519,7 +519,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lvU-el-Q8Q" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3277.5999999999999" y="-681.40929535232385"/>
+            <point key="canvasLocation" x="3278" y="-553"/>
         </scene>
         <!--Text Comments Controller-->
         <scene sceneID="LGk-qY-ykp">
@@ -875,6 +875,16 @@
                                     <action selector="AddPhoto:" destination="J8m-E5-Rs6" eventType="touchUpInside" id="ROd-lk-EgA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMj-AW-Bib">
+                                <rect key="frame" x="157" y="521" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOut:" destination="J8m-E5-Rs6" eventType="touchUpInside" id="nFg-V0-Tkq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -895,6 +905,7 @@
                         <outlet property="status" destination="PCE-98-G3E" id="7ml-je-aOC"/>
                         <outlet property="userName" destination="7Yc-NY-mR6" id="MUW-Pm-Uv2"/>
                         <segue destination="fXm-CT-oYd" kind="presentation" identifier="toHome" id="xLr-bf-xRS"/>
+                        <segue destination="RUa-fa-UmN" kind="presentation" identifier="toLogin" id="yfs-9D-mLe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjF-xT-fiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
