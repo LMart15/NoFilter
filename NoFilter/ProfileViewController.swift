@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import Firebase
 
-class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class ProfileViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     var userRef:FIRDatabaseReference!
     var userStorage:FIRStorageReference!
@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UI
     @IBOutlet weak var profileImg: UIImageView!
   
     let picker = UIImagePickerController()
-    
+    var keyboard = CGRect()
     @IBAction func AddPhoto(_ sender: UIButton) {
         selectProfile()
     }
@@ -90,11 +90,28 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UI
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let profileOnTap = UITapGestureRecognizer(target: self, action: #selector(selectProfilePicOnTap))
+        profileOnTap.numberOfTapsRequired = 1
+        profileImg.isUserInteractionEnabled = true
+        profileImg.addGestureRecognizer(profileOnTap)
         
+
         picker.delegate = self 
         let storage = FIRStorage.storage().reference(forURL:"gs://projectreall-35e59.appspot.com")
         userStorage = storage.child("users")
         userRef = FIRDatabase.database().reference()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: .UIKeyboardWillShow , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: .UIKeyboardWillHide , object: nil)
+        
+        let hideOnTap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardTap))
+        hideOnTap.numberOfTapsRequired = 1
+        self.view.isUserInteractionEnabled = true
+        self.view.addGestureRecognizer(hideOnTap)
+        
+        fullName.delegate = self
+        userName.delegate = self
+        phoneNumber.delegate = self
         
         fetchUser()
     }
@@ -102,6 +119,23 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UI
     override func viewDidAppear(_ animated: Bool) {
        
     }
+    
+    func hideKeyboardTap(recognizer: UITapGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
+    func showKeyboard(notification:NSNotification){
+        
+        keyboard = ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue)!
+        
+    
+    }
+    
+    func hideKeyboard(notification:NSNotification){
+        
+    
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -115,6 +149,13 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UI
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    
+    func selectProfilePicOnTap(recognizer: UITapGestureRecognizer){
+        
+        selectProfile()
         
     }
     
@@ -137,6 +178,13 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate,UI
         
         
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func fetchUser(){
         
         let userID = FIRAuth.auth()?.currentUser?.uid
