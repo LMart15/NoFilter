@@ -2,7 +2,7 @@
 //  HomeCollectionViewController.swift
 //  NoFilter
 //
-//  Created by Lawrence Martin on 2017-04-13.
+//  Created by Lawrence Martin on 2017-04-16.
 //  Copyright © 2017 mapd.centennial.proapptive. All rights reserved.
 //
 
@@ -22,7 +22,7 @@ class HomeCollectionViewController: UICollectionViewController {
         fetchPosts()
         
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return uPostsList.count
@@ -44,7 +44,7 @@ class HomeCollectionViewController: UICollectionViewController {
         uref.observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             let profileImage = value?["profileImage"] as! String
-           self.navigationItem.title = value?["fullName"] as? String
+            self.navigationItem.title = value?["fullName"] as? String
             
             if let statusTemp = value?["userStatus"] as! String!
             {
@@ -58,13 +58,12 @@ class HomeCollectionViewController: UICollectionViewController {
                 header.profileImg.image = UIImage(data: data! as Data)
                 header.profileImg.layer.cornerRadius = header.profileImg.frame.width/2.0
                 header.profileImg.clipsToBounds = true
-               
             }
-
+            
         })
         
         return header
-    
+        
     }
     
     func fetchPosts(){
@@ -95,13 +94,13 @@ class HomeCollectionViewController: UICollectionViewController {
         } , withCancel: nil)
         
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCollectionViewCell
         
         cell.layer.shouldRasterize = true
         cell.layer.rasterizationScale = UIScreen.main.scale
-    
+        
         cell.frame.size.width = (self.collectionView?.frame.size.width)! / 3
         
         userCellPosts = uPostsList[indexPath.row]
@@ -116,37 +115,37 @@ class HomeCollectionViewController: UICollectionViewController {
         
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
-    */
+    // MARK: UICollectionViewDelegate
+    
+    /*
+     // Uncomment this method to specify if the specified item should be highlighted during tracking
+     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+     return true
+     }
+     */
+    
+    /*
+     // Uncomment this method to specify if the specified item should be selected
+     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+     return true
+     }
+     */
+    
+    /*
+     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+     return false
+     }
+     
+     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+     return false
+     }
+     
+     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+     
+     }
+     */
     
     fileprivate let itemsPerRow: CGFloat = 3
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
@@ -157,8 +156,7 @@ class HomeCollectionViewController: UICollectionViewController {
         //2
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
-        let widthPerItem = availableWidth / 3
-     
+        let widthPerItem = availableWidth / itemsPerRow
         
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
@@ -176,6 +174,5 @@ class HomeCollectionViewController: UICollectionViewController {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
-
+    
 }
-

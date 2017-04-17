@@ -27,6 +27,9 @@
 		1832BE4D1E6A36920012C882 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4A1E6A36920012C882 /* FirstViewController.swift */; };
 		1832BE4E1E6A36920012C882 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4B1E6A36920012C882 /* SecondViewController.swift */; };
 		1832BE4F1E6A36920012C882 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4C1E6A36920012C882 /* TableViewCell.swift */; };
+		55A4063B1EA474C100597E29 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A4063A1EA474C100597E29 /* HomeCollectionViewCell.swift */; };
+		55A4063D1EA4750400597E29 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A4063C1EA4750400597E29 /* HomeCollectionViewController.swift */; };
+		55A4063F1EA4752800597E29 /* HomeHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A4063E1EA4752800597E29 /* HomeHeaderCollectionReusableView.swift */; };
 		55C8DE201E4BFCDB00AB98DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C8DE1F1E4BFCDB00AB98DD /* AppDelegate.swift */; };
 		55C8DE221E4BFCDC00AB98DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C8DE211E4BFCDC00AB98DD /* ViewController.swift */; };
 		55C8DE251E4BFCDC00AB98DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C8DE231E4BFCDC00AB98DD /* Main.storyboard */; };
@@ -65,6 +68,9 @@
 		1832BE4A1E6A36920012C882 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		1832BE4B1E6A36920012C882 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		1832BE4C1E6A36920012C882 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		55A4063A1EA474C100597E29 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		55A4063C1EA4750400597E29 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
+		55A4063E1EA4752800597E29 /* HomeHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		55C8DE1C1E4BFCDB00AB98DD /* NoFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55C8DE1F1E4BFCDB00AB98DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55C8DE211E4BFCDC00AB98DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +164,9 @@
 				10D52CE31E8B832E009269FE /* CommentsViewCell.swift */,
 				102C54B51E9425310070AD85 /* FloatingBtnViewController.swift */,
 				FD34A8911E9F14F600C07093 /* ProfileViewController.swift */,
+				55A4063A1EA474C100597E29 /* HomeCollectionViewCell.swift */,
+				55A4063C1EA4750400597E29 /* HomeCollectionViewController.swift */,
+				55A4063E1EA4752800597E29 /* HomeHeaderCollectionReusableView.swift */,
 			);
 			path = NoFilter;
 			sourceTree = "<group>";
@@ -302,9 +311,11 @@
 				55C8DE221E4BFCDC00AB98DD /* ViewController.swift in Sources */,
 				10D52CE21E8B8047009269FE /* CommentsViewController.swift in Sources */,
 				10D52CD91E884206009269FE /* AudioCommentCell.swift in Sources */,
+				55A4063B1EA474C100597E29 /* HomeCollectionViewCell.swift in Sources */,
 				A0C815031E8C9076001C99E8 /* ImagesTableViewCell.swift in Sources */,
 				10D52CD51E8841E8009269FE /* TxtCommentCellTableViewCell.swift in Sources */,
 				55C8DE201E4BFCDB00AB98DD /* AppDelegate.swift in Sources */,
+				55A4063D1EA4750400597E29 /* HomeCollectionViewController.swift in Sources */,
 				104FA9681E819B7500E2AB13 /* DataViewController.swift in Sources */,
 				102C54BA1E9595500070AD85 /* ImageTableViewCell.swift in Sources */,
 				102C54B61E9425310070AD85 /* FloatingBtnViewController.swift in Sources */,
@@ -312,6 +323,7 @@
 				10D52CDE1E8AD97C009269FE /* TempViewController.swift in Sources */,
 				A0C815041E8C9076001C99E8 /* ImagesTableViewController.swift in Sources */,
 				1832BE4F1E6A36920012C882 /* TableViewCell.swift in Sources */,
+				55A4063F1EA4752800597E29 /* HomeHeaderCollectionReusableView.swift in Sources */,
 				104FA9641E819A5800E2AB13 /* user.swift in Sources */,
 				102C54B91E9595500070AD85 /* FriendsViewController.swift in Sources */,
 				10D52CE41E8B832E009269FE /* CommentsViewCell.swift in Sources */,
