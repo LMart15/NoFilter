@@ -8,7 +8,7 @@
 //
 import UIKit
 import Firebase
-
+import SVProgressHUD
 class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //@IBOutlet weak var myTable: UITableView!
     
@@ -47,6 +47,13 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show(withStatus: "Loading!!")
+        
+        //SVProgressHUDMaskType.gradient.rawValue.bigEndian.littleEndian.byteSwapped
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
+
+      //  SVProgressHUD.show(withStatus: "Loading!!")
+      //  SVProgressHUD.dismiss(withDelay: 1000)
         self.tabBarController?.selectedIndex = 1
         ref = FIRDatabase.database().reference() //?????
         obj.pid="x"
@@ -64,6 +71,8 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         // Do any additional setup after loading the view, typically from a nib.
     }
    
+    override func viewDidAppear(_ animated: Bool) {
+            }
     
    func fetchPostedData()
    {
@@ -146,8 +155,9 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             self.valueToPass=self.uPostsList[indexPath.row].postId
 //            print("show Post ID in First View Controller >>>>>>\(self.valueToPass)")
         }
-        
+         SVProgressHUD.dismiss()
         return cell
+        
     }
     
     

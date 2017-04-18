@@ -81,9 +81,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9lp-3N-Xbc" customClass="FBSDKLoginButton">
                                 <rect key="frame" x="86" y="608" width="196" height="39"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="fbLoginBtnAction:" destination="UC2-Pl-FLX" eventType="valueChanged" id="rz1-Q5-qeX"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1227,8 +1224,8 @@
         <image name="unnamed" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xLr-bf-xRS"/>
         <segue reference="qDT-AB-lKa"/>
+        <segue reference="xLr-bf-xRS"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

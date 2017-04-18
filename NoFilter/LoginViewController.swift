@@ -63,7 +63,7 @@ var dict : [String : AnyObject]!
                 print(error?.localizedDescription)
                 return
             }
-           self.getFBUserData()
+          // self.getFBUserData()
             print("User logged In with fb...")
     
 
@@ -77,7 +77,7 @@ var dict : [String : AnyObject]!
                     if(fbloginresult.grantedPermissions.contains("email"))
                     {
                         self.getFBUserData()
-                      //  fbLoginManager.logOut()
+                      fbLoginManager.logOut()
                         
                         self.performSegue(withIdentifier: "directSign", sender: nil)
                     }

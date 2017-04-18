@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
-
+import SVProgressHUD
 class RegisterScreenView: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -286,6 +286,7 @@ class RegisterScreenView: UIViewController,UITextFieldDelegate,UIImagePickerCont
             })
         }else {
             print("Password does not match")
+            SVProgressHUD.showError(withStatus: "Fill Proper Info")
         }
         
 

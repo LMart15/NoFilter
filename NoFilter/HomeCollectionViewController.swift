@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseStorage
 import SDWebImage
-
+import SVProgressHUD
 class HomeCollectionViewController: UICollectionViewController {
     
     var uPostsList = [UserPost]()
@@ -20,11 +20,17 @@ class HomeCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show(withStatus: "Loading!!")
         
+        //SVProgressHUDMaskType.gradient.rawValue.bigEndian.littleEndian.byteSwapped
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
         fetchPosts()
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+       
+    }
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return uPostsList.count
@@ -68,7 +74,7 @@ class HomeCollectionViewController: UICollectionViewController {
             }
             
         })
-        
+       
         return header
         
     }
@@ -121,7 +127,7 @@ class HomeCollectionViewController: UICollectionViewController {
         }
         
         //cell.backgroundColor = UIColor.black
-        
+         SVProgressHUD.dismiss()
         return cell
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import Firebase
-
+import FBSDKLoginKit
 class ProfileViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     var userRef:FIRDatabaseReference!
@@ -188,6 +188,10 @@ class ProfileViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
     @IBAction func signOut(_ sender: UIButton) {
         try! FIRAuth.auth()!.signOut()
          self.performSegue(withIdentifier: "toLogin", sender: self)
+          let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+        
+        
+        
         
     }
     func fetchUser(){

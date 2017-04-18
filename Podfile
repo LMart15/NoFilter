@@ -18,5 +18,6 @@ target 'NoFilter' do
   pod 'FacebookShare'
   pod 'FBSDKLoginKit'
   pod 'FirebaseUI', '~> 3.0'
+  pod 'SVProgressHUD', '~> 2.1'
 
 end

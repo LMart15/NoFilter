@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
-
+import SVProgressHUD
 class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     var suggestedFriendsList = [UserProfile]()
@@ -23,6 +23,10 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        SVProgressHUD.show(withStatus: "Loading!!")
+        
+        //SVProgressHUDMaskType.gradient.rawValue.bigEndian.littleEndian.byteSwapped
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
         //print("fetching useres")
         fetchSuggestFriends();
         fetchFriendRequests();
@@ -30,9 +34,8 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(_ animated: Bool) {
+       
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -120,7 +123,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         default:
             break
         }
-        
+        SVProgressHUD.dismiss()
         return cell
     }
     
