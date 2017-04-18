@@ -988,9 +988,11 @@
                                 <rect key="frame" x="85" y="38" width="204" height="29"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
-                                    <segment title="FriendRequest"/>
+                                    <segment title="Suggest"/>
+                                    <segment title="Requests"/>
                                     <segment title="My Friends"/>
                                 </segments>
+                                <color key="tintColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
                                     <action selector="ItemSelected:" destination="9c4-aN-Zi0" eventType="valueChanged" id="q36-dI-woU"/>
                                 </connections>
@@ -1020,14 +1022,39 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dr-ld-1b3">
                                                     <rect key="frame" x="264" y="4" width="103" height="30"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.87845766140000003" blue="0.72991714080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="103" id="HBH-Yd-sGw"/>
                                                     </constraints>
-                                                    <state key="normal" title="Add as Friend">
-                                                        <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Add Friend">
+                                                        <color key="titleColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="AddFriend:" destination="D75-tQ-Kng" eventType="touchUpInside" id="THv-gR-tMJ"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bkp-FB-lbu">
+                                                    <rect key="frame" x="232" y="4" width="71" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.87845766140000003" blue="0.72991714080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Accept">
+                                                        <color key="titleColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="AcceptFriend:" destination="D75-tQ-Kng" eventType="touchUpInside" id="YXB-jj-MKS"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M76-96-B88">
+                                                    <rect key="frame" x="304" y="5" width="71" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Reject">
+                                                        <color key="titleColor" red="0.0" green="0.87845766140000003" blue="0.72991714080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="RejectFriend:" destination="D75-tQ-Kng" eventType="touchUpInside" id="C7N-Fs-iut"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1044,9 +1071,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="acceptBtn" destination="Bkp-FB-lbu" id="pBh-FO-xpU"/>
                                             <outlet property="addAsFriend" destination="3Dr-ld-1b3" id="QDd-ye-a8w"/>
                                             <outlet property="profileImg" destination="YmR-0r-kY7" id="lb0-IP-bt8"/>
                                             <outlet property="profileName" destination="cg5-aE-gdn" id="Bxt-UV-y4M"/>
+                                            <outlet property="rejectBtn" destination="M76-96-B88" id="o10-dg-KP4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

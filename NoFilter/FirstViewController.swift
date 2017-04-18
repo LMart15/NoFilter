@@ -5,7 +5,7 @@
 //  Created by Harpreet singh on 2017-02-28.
 //  Copyright © 2017 assignment2. All rights reserved.
 //
-
+//
 import UIKit
 import Firebase
 
@@ -22,7 +22,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     var uProfile = [UserProfile]()
     
     var uPostsList = [UserPost]()
-    
+    var userFriends = [String]()
     var userCellPosts = UserPost()
     var refHandle: UInt!
     var ref: FIRDatabaseReference!
@@ -113,7 +113,6 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        //print("postCount",uPosts.count)
         return uPostsList.count
     }
     
@@ -124,10 +123,8 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         let imghs=cell.viewWithTag(3) as! UIImageView
         let tB = cell.viewWithTag(8) as! UIButton
         let vB=cell.viewWithTag(7) as! UIButton
+        let userimage = cell.viewWithTag(1) as! UIImageView
 
-        
-        //imghs.layer.clipsToBounds= YES;
-        //imghs.layer.contentMode = UIViewContentModeScaleAspectFit;
         
         // Calling Segue functions to pass Post IDs
         vB.addTarget(self, action: #selector(FirstViewController.voiceBtnHandler(sender:)), for: UIControlEvents.touchUpInside)
@@ -135,10 +132,11 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         tB.addTarget(self, action: #selector(FirstViewController.textBtnHandler(sender:)), for: UIControlEvents.touchUpInside)
         
         
+        
         userCellPosts = uPostsList[indexPath.row]
-//        print("postrow",userCellPosts)
         
         user.text = userCellPosts.author
+        
         let imgurl = userCellPosts.pathToImage
         let url = NSURL(string: imgurl)
         let data = NSData(contentsOf: url! as URL) // this URL convert into Data
@@ -146,8 +144,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         imghs.image = UIImage(data: data! as Data)
             cell.postId=self.uPostsList[indexPath.row].postId
             self.valueToPass=self.uPostsList[indexPath.row].postId
-           
-            print("show Post ID in First View Controller >>>>>>\(self.valueToPass)")
+//            print("show Post ID in First View Controller >>>>>>\(self.valueToPass)")
         }
         
         return cell
@@ -204,14 +201,26 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     func fetchPosts(){
         let eref = FIRDatabase.database().reference().child("posts")
         var userPost = UserPost()
+        FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("myFriends").observe(.value, with:
+            {(mysnapshot) in
+                
+                if let friend = mysnapshot.value as? [String:AnyObject]
+                {
+                    for friendid in friend
+                    {
+                        self.userFriends.append(friendid.key)
+                    }
+                }
+//                print("FriendsUser",self.userFriends)
+
+        })
         
-        eref.observe(.childAdded, with: { (snaps) in
+        eref.queryOrdered(byChild: "timestamp").observe(.childAdded, with: { (snaps) in
             if let dictn = snaps.value as? [String : AnyObject]
             {
                 let userID = FIRAuth.auth()?.currentUser?.uid
-                if(userID == dictn["uId"] as? String){
-                //print("postdictvalue",dict.values,"count",dict.count)
-//                print( "snapKey",snaps.key, "hello")
+                if(((userID! == (dictn["uId"] as? String)!)) || ((self.userFriends).contains((dictn["uId"] as? String)!)) ){
+                    
                 userPost.author = dictn["displayName"] as! String
                 userPost.likes = String(describing: dictn["likes"]) 
                 userPost.pathToImage = dictn["pathToImage"] as! String
@@ -220,6 +229,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
                 userPost.key = snaps.key
                 userPost.timestamp = dictn["timestamp"] as! String
                 self.uPostsList.append(userPost)
+                    
                 }
             }
             
@@ -275,14 +285,14 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
            
                 let controller = segue.destination as! AudioRecorder
                 controller.pid = self.valueToPass
-                print("PID from Segue in FVC Do\(self.valueToPass)")
+                //print("PID from Segue in FVC Do\(self.valueToPass)")
             
         }
         else if segue.identifier == "textSend" {
             
             let commentsController = segue.destination as! CommentsViewController
             commentsController.pid = self.valueToPass
-            print("PID from Segue in FVC textSend \(self.valueToPass)")
+            //print("PID from Segue in FVC textSend \(self.valueToPass)")
             
         }
     }
@@ -296,8 +306,6 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     {
         self.performSegue(withIdentifier: "textSend", sender:self)
     }
-   
-    
     
 }
 
