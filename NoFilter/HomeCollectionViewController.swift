@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
+import SDWebImage
 
 class HomeCollectionViewController: UICollectionViewController {
     
@@ -45,13 +47,18 @@ class HomeCollectionViewController: UICollectionViewController {
             let value = snapshot.value as? NSDictionary
             let profileImage = value?["profileImage"] as! String
             self.navigationItem.title = value?["fullName"] as? String
+            let numFriends = snapshot.childSnapshot(forPath: "Friends/myFriends").childrenCount
             
+        
             if let statusTemp = value?["userStatus"] as! String!
             {
                 if statusTemp != nil {
                     header.bio_txtview.text = statusTemp
                 }
             }
+            
+            header.numPosts_lbl.text = String (self.uPostsList.count)
+            header.numFollowing_lbl.text = String (numFriends)
             let url = NSURL(string: profileImage)
             let data = NSData(contentsOf: url! as URL) // this URL convert into Data
             if data != nil {  //Some time Data value will be nil so we need to validate such things
@@ -102,13 +109,15 @@ class HomeCollectionViewController: UICollectionViewController {
         cell.layer.rasterizationScale = UIScreen.main.scale
         
         cell.frame.size.width = (self.collectionView?.frame.size.width)! / 3
+        let placeHolderImage = UIImage(named: "AppIcon")
         
         userCellPosts = uPostsList[indexPath.row]
         var imgurl = userCellPosts.pathToImage
         var url = NSURL(string: imgurl)
         var data = NSData(contentsOf: url! as URL) // this URL convert into Data
         if data != nil {  //Some time Data value will be nil so we need to validate such things
-            cell.postImg_img.image = UIImage(data: data! as Data)
+            cell.sd_setShowActivityIndicatorView(true)
+            cell.postImg_img.sd_setImage(with: url as URL?, placeholderImage: placeHolderImage)
         }
         
         //cell.backgroundColor = UIColor.black

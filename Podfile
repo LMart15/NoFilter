@@ -13,5 +13,6 @@ target 'NoFilter' do
   pod 'Firebase/Storage'
   pod ‘DKCamera’
   pod 'KCFloatingActionButton'
+  pod 'FirebaseUI', '~> 3.0'
   
 end

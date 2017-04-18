@@ -39,10 +39,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         username_label.delegate = self
         password.delegate = self
-        if FIRAuth.auth()?.currentUser != nil {
-            print(FIRAuth.auth()?.currentUser?.email)
-            self.performSegue(withIdentifier: "directSign", sender: nil)
-        }
+//        if FIRAuth.auth()?.currentUser != nil {
+//            print(FIRAuth.auth()?.currentUser?.email)
+//            self.performSegue(withIdentifier: "directSign", sender: nil)
+//        }
     }
 
     override func didReceiveMemoryWarning() {
