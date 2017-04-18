@@ -185,6 +185,11 @@ class ProfileViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
         return true
     }
     
+    @IBAction func signOut(_ sender: UIButton) {
+        try! FIRAuth.auth()!.signOut()
+         self.performSegue(withIdentifier: "toLogin", sender: self)
+        
+    }
     func fetchUser(){
         
         let userID = FIRAuth.auth()?.currentUser?.uid
