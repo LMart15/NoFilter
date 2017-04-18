@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NoFilter/FirstViewController.swift"
+            timestampString = "510636521.463668"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "FirstViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NoFilter.FirstViewController.names.getter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "NoFilter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csiadmin/Documents/CSIAmerica/Development/ios/NoFilter/NoFilter/FirstViewController.swift"
+                  timestampString = "510631249.242427"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NoFilter.FirstViewController.names.setter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "NoFilter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csiadmin/Documents/CSIAmerica/Development/ios/NoFilter/NoFilter/FirstViewController.swift"
+                  timestampString = "510631249.244181"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NoFilter.FirstViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; NoFilter.FirstViewController"
+                  moduleName = "NoFilter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csiadmin/Documents/CSIAmerica/Development/ios/NoFilter/NoFilter/FirstViewController.swift"
+                  timestampString = "510631249.24563"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "1252">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NoFilter.FirstViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;NoFilter.FirstViewController&gt;"
+                  moduleName = "NoFilter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csiadmin/Documents/CSIAmerica/Development/ios/NoFilter/NoFilter/FirstViewController.swift"
+                  timestampString = "510631249.246925"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "1167">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NoFilter/CommentsViewController.swift"
+            timestampString = "513644546.56864"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NoFilter.CommentsViewController.tableView (__ObjC.UITableView, cellForRowAt : Foundation.IndexPath) -&gt; __ObjC.UITableViewCell"
+                  moduleName = "NoFilter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csiadmin/Documents/CSIAmerica/Development/ios/newww-master/NoFilter/CommentsViewController.swift"
+                  timestampString = "513638164.77617"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "2415">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NoFilter.CommentsViewController.(tableView (__ObjC.UITableView, cellForRowAt : Foundation.IndexPath) -&gt; __ObjC.UITableViewCell).(closure #1)"
+                  moduleName = "NoFilter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csiadmin/Documents/CSIAmerica/Development/ios/newww-master/NoFilter/CommentsViewController.swift"
+                  timestampString = "513638164.779342"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "15">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
