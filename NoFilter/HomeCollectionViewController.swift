@@ -2,12 +2,14 @@
 //  HomeCollectionViewController.swift
 //  NoFilter
 //
-//  Created by Lawrence Martin on 2017-04-13.
+//  Created by Lawrence Martin on 2017-04-16.
 //  Copyright © 2017 mapd.centennial.proapptive. All rights reserved.
 //
 
 import UIKit
 import Firebase
+import FirebaseStorage
+import SDWebImage
 
 class HomeCollectionViewController: UICollectionViewController {
     
@@ -22,7 +24,7 @@ class HomeCollectionViewController: UICollectionViewController {
         fetchPosts()
         
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return uPostsList.count
@@ -35,6 +37,7 @@ class HomeCollectionViewController: UICollectionViewController {
         
         header.profileImg.layer.cornerRadius = header.profileImg.frame.size.width / 2
         header.profileImg.clipsToBounds = true
+        header.backgroundColor = UIColor.white
         
         let userID = FIRAuth.auth()?.currentUser?.uid
         //print("usersID",userID!)
@@ -43,14 +46,19 @@ class HomeCollectionViewController: UICollectionViewController {
         uref.observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             let profileImage = value?["profileImage"] as! String
-           self.navigationItem.title = value?["fullName"] as? String
+            self.navigationItem.title = value?["fullName"] as? String
+            let numFriends = snapshot.childSnapshot(forPath: "Friends/myFriends").childrenCount
             
+        
             if let statusTemp = value?["userStatus"] as! String!
             {
                 if statusTemp != nil {
                     header.bio_txtview.text = statusTemp
                 }
             }
+            
+            header.numPosts_lbl.text = String (self.uPostsList.count)
+            header.numFollowing_lbl.text = String (numFriends)
             let url = NSURL(string: profileImage)
             let data = NSData(contentsOf: url! as URL) // this URL convert into Data
             if data != nil {  //Some time Data value will be nil so we need to validate such things
@@ -58,11 +66,11 @@ class HomeCollectionViewController: UICollectionViewController {
                 header.profileImg.layer.cornerRadius = header.profileImg.frame.width/2.0
                 header.profileImg.clipsToBounds = true
             }
-
+            
         })
         
         return header
-    
+        
     }
     
     func fetchPosts(){
@@ -93,58 +101,60 @@ class HomeCollectionViewController: UICollectionViewController {
         } , withCancel: nil)
         
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCollectionViewCell
         
         cell.layer.shouldRasterize = true
         cell.layer.rasterizationScale = UIScreen.main.scale
-    
+        
         cell.frame.size.width = (self.collectionView?.frame.size.width)! / 3
+        let placeHolderImage = UIImage(named: "AppIcon")
         
         userCellPosts = uPostsList[indexPath.row]
         var imgurl = userCellPosts.pathToImage
         var url = NSURL(string: imgurl)
         var data = NSData(contentsOf: url! as URL) // this URL convert into Data
         if data != nil {  //Some time Data value will be nil so we need to validate such things
-            cell.postImg_img.image = UIImage(data: data! as Data)
+            cell.sd_setShowActivityIndicatorView(true)
+            cell.postImg_img.sd_setImage(with: url as URL?, placeholderImage: placeHolderImage)
         }
         
         //cell.backgroundColor = UIColor.black
         
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
-    */
+    // MARK: UICollectionViewDelegate
+    
+    /*
+     // Uncomment this method to specify if the specified item should be highlighted during tracking
+     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+     return true
+     }
+     */
+    
+    /*
+     // Uncomment this method to specify if the specified item should be selected
+     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+     return true
+     }
+     */
+    
+    /*
+     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+     return false
+     }
+     
+     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+     return false
+     }
+     
+     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+     
+     }
+     */
     
     fileprivate let itemsPerRow: CGFloat = 3
     fileprivate let sectionInsets = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
@@ -173,6 +183,5 @@ class HomeCollectionViewController: UICollectionViewController {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
-
+    
 }
-

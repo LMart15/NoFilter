@@ -17,5 +17,6 @@ target 'NoFilter' do
   pod 'FacebookLogin'
   pod 'FacebookShare'
   pod 'FBSDKLoginKit'
+  pod 'FirebaseUI', '~> 3.0'
 
 end

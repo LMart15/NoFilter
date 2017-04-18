@@ -27,7 +27,9 @@
 		1832BE4E1E6A36920012C882 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4B1E6A36920012C882 /* SecondViewController.swift */; };
 		1832BE4F1E6A36920012C882 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1832BE4C1E6A36920012C882 /* TableViewCell.swift */; };
 		22FDBF9F1EA5445600725166 /* post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FDBF9D1EA5445600725166 /* post.swift */; };
-		22FDBFA01EA5445600725166 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FDBF9E1EA5445600725166 /* user.swift */; };
+		55A9660A1EA5A9B200B5D870 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A966071EA5A9B200B5D870 /* HomeCollectionViewCell.swift */; };
+		55A9660B1EA5A9B200B5D870 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A966081EA5A9B200B5D870 /* HomeCollectionViewController.swift */; };
+		55A9660C1EA5A9B200B5D870 /* HomeHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A966091EA5A9B200B5D870 /* HomeHeaderCollectionReusableView.swift */; };
 		55C8DE201E4BFCDB00AB98DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C8DE1F1E4BFCDB00AB98DD /* AppDelegate.swift */; };
 		55C8DE221E4BFCDC00AB98DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C8DE211E4BFCDC00AB98DD /* ViewController.swift */; };
 		55C8DE251E4BFCDC00AB98DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C8DE231E4BFCDC00AB98DD /* Main.storyboard */; };
@@ -69,6 +71,9 @@
 		1832BE4C1E6A36920012C882 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		22FDBF9D1EA5445600725166 /* post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = post.swift; sourceTree = "<group>"; };
 		22FDBF9E1EA5445600725166 /* user.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
+		55A966071EA5A9B200B5D870 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		55A966081EA5A9B200B5D870 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
+		55A966091EA5A9B200B5D870 /* HomeHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		55C8DE1C1E4BFCDB00AB98DD /* NoFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55C8DE1F1E4BFCDB00AB98DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55C8DE211E4BFCDC00AB98DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +155,9 @@
 				104FA9671E819B7500E2AB13 /* DataViewController.swift */,
 				10D52CCF1E8821AC009269FE /* TextCommentsController.swift */,
 				10D52CD31E8841E8009269FE /* TxtCommentCellTableViewCell.swift */,
+				55A966071EA5A9B200B5D870 /* HomeCollectionViewCell.swift */,
+				55A966081EA5A9B200B5D870 /* HomeCollectionViewController.swift */,
+				55A966091EA5A9B200B5D870 /* HomeHeaderCollectionReusableView.swift */,
 				10D52CD41E8841E8009269FE /* TxtCommentCellTableViewCell.xib */,
 				10D52CD71E884206009269FE /* AudioCommentCell.swift */,
 				10D52CD81E884206009269FE /* AudioCommentCell.xib */,
@@ -269,7 +277,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		879A8006A675A18F449A3C02 /* [CP] Embed Pods Frameworks */ = {
@@ -314,9 +322,11 @@
 				55C8DE221E4BFCDC00AB98DD /* ViewController.swift in Sources */,
 				22FDBF9F1EA5445600725166 /* post.swift in Sources */,
 				10D52CE21E8B8047009269FE /* CommentsViewController.swift in Sources */,
+				55A9660A1EA5A9B200B5D870 /* HomeCollectionViewCell.swift in Sources */,
 				10D52CD91E884206009269FE /* AudioCommentCell.swift in Sources */,
 				A0C815031E8C9076001C99E8 /* ImagesTableViewCell.swift in Sources */,
 				10D52CD51E8841E8009269FE /* TxtCommentCellTableViewCell.swift in Sources */,
+				55A9660B1EA5A9B200B5D870 /* HomeCollectionViewController.swift in Sources */,
 				55C8DE201E4BFCDB00AB98DD /* AppDelegate.swift in Sources */,
 				104FA9681E819B7500E2AB13 /* DataViewController.swift in Sources */,
 				102C54BA1E9595500070AD85 /* ImageTableViewCell.swift in Sources */,
@@ -324,6 +334,7 @@
 				FD6B350D1E55380200475370 /* RegisterScreenView.swift in Sources */,
 				10D52CDE1E8AD97C009269FE /* TempViewController.swift in Sources */,
 				A0C815041E8C9076001C99E8 /* ImagesTableViewController.swift in Sources */,
+				55A9660C1EA5A9B200B5D870 /* HomeHeaderCollectionReusableView.swift in Sources */,
 				101160E31EA169E300E1058F /* SettingsController.swift in Sources */,
 				1832BE4F1E6A36920012C882 /* TableViewCell.swift in Sources */,
 				102C54B91E9595500070AD85 /* FriendsViewController.swift in Sources */,
