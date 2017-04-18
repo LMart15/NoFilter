@@ -93,11 +93,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         self.users.removeAll()
         ref.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: {
             snapshot in
-          /*  if  let users = snapshot.value as? [String:Any] {
-                userProfile.fullName = users["fullName"] as! String
-                print(userProfile.fullName)
-                self.users.append(userProfile)
-            }*/
+         
             if snapshot.value is NSNull {
                 
             }else {

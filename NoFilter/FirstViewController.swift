@@ -47,6 +47,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.selectedIndex = 1
         ref = FIRDatabase.database().reference() //?????
         obj.pid="x"
     //  fetchPostedData()

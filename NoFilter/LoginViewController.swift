@@ -77,7 +77,7 @@ var dict : [String : AnyObject]!
                     if(fbloginresult.grantedPermissions.contains("email"))
                     {
                         self.getFBUserData()
-                        fbLoginManager.logOut()
+                      //  fbLoginManager.logOut()
                         
                         self.performSegue(withIdentifier: "directSign", sender: nil)
                     }
