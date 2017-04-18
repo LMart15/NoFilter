@@ -11,12 +11,12 @@ import Firebase
 import FirebaseDatabase
 
 class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+    
     var suggestedFriendsList = [UserProfile]()
     var myFriendsList = [UserProfile]()
     var friendRequestsList = [UserProfile]()
     var suggestedFriends = [String]()
-
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,7 +29,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         fetchmyFriends();
     }
     
-   
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,13 +51,13 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         // Instantiate a cell
-       let cell=tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ImageTableViewCell
-
+        let cell=tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ImageTableViewCell
+        
         switch (segmentedControl.selectedSegmentIndex) {
         case 0:
-           
+            
             let user = cell.viewWithTag(2) as! UILabel
             let imageView = cell.viewWithTag(1) as! UIImageView
             
@@ -77,7 +77,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             
             break
         case 1:
-
+            
             let user = cell.viewWithTag(2) as! UILabel
             let imageView = cell.viewWithTag(1) as! UIImageView
             
@@ -120,23 +120,25 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         default:
             break
         }
-
+        
         return cell
     }
     
     @IBAction func ItemSelected(_ sender: Any) {
-            self.tableView.reloadData()
+        self.tableView.reloadData()
     }
     
-
-    func fetchUsers() {
-        var userProfile = UserProfile()
-        let ref = FIRDatabase.database().reference()
-        self.users.removeAll()
-        ref.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: {
-            snapshot in
-         
-            if snapshot.value is NSNull {
+    
+    func fetchSuggestFriends()
+    {
+        var suggestedFriendProfile = UserProfile()
+        
+        self.suggestedFriendsList.removeAll()
+        self.myFriendsList.removeAll()
+        self.friendRequestsList.removeAll()
+        self.suggestedFriends.append((FIRAuth.auth()?.currentUser?.uid)!)
+        FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("myFriends").observe(.value, with:
+            {(mysnapshot) in
                 
                 if let friend = mysnapshot.value as? [String:AnyObject]
                 {
@@ -146,7 +148,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
                         print("friendid",friendid.key)
                     }
                 }
-//                print("FriendsUser",self.suggestedFriends)
+                //                print("FriendsUser",self.suggestedFriends)
         })
         
         FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("friendRequests").observe(.value, with:
@@ -157,10 +159,10 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
                     for friendid in friend
                     {
                         self.suggestedFriends.append(friendid.key)
-//                        print("friendid",friendid.key)
+                        //                        print("friendid",friendid.key)
                     }
                 }
-//                print("FriendsUser",self.suggestedFriends)
+                //                print("FriendsUser",self.suggestedFriends)
         })
         
         FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("pendingRequests").observe(.value, with:
@@ -171,33 +173,33 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
                     for friendid in friend
                     {
                         self.suggestedFriends.append(friendid.key)
-//                        print("friendid",friendid.key)
+                        //                        print("friendid",friendid.key)
                     }
                 }
-//                print("FriendsUser",self.suggestedFriends)
+                //                print("FriendsUser",self.suggestedFriends)
         })
         
-
+        
         FIRDatabase.database().reference().child("users").observe(.value, with: { (snapshot) in
             for suggestedfriendSnap in snapshot.children{
                 
                 if(self.suggestedFriends.contains((suggestedfriendSnap as! FIRDataSnapshot).key))
                 {
-//                    print("already friends",(suggestedfriendSnap as! FIRDataSnapshot).key)
+                    // print("already friends",(suggestedfriendSnap as! FIRDataSnapshot).key)
                 }
                 else{
-                if let suggestedfriend = (suggestedfriendSnap as! FIRDataSnapshot).value as? [String:AnyObject]{
-                    
-                    suggestedFriendProfile.fullName = suggestedfriend["fullName"] as! String
-                    if((suggestedfriend["profileImage"]) != nil){
-                        suggestedFriendProfile.profileImage = suggestedfriend["profileImage"] as! String
+                    if let suggestedfriend = (suggestedfriendSnap as! FIRDataSnapshot).value as? [String:AnyObject]{
+                        
+                        suggestedFriendProfile.fullName = suggestedfriend["fullName"] as! String
+                        if((suggestedfriend["profileImage"]) != nil){
+                            suggestedFriendProfile.profileImage = suggestedfriend["profileImage"] as! String
+                        }
+                        
+                        if((suggestedfriend["uId"]) != nil){
+                            suggestedFriendProfile.uId = suggestedfriend["uId"] as! String
+                        }
+                        self.suggestedFriendsList.append(suggestedFriendProfile)
                     }
-                    
-                     if((suggestedfriend["uId"]) != nil){
-                        suggestedFriendProfile.uId = suggestedfriend["uId"] as! String
-                    }
-                    self.suggestedFriendsList.append(suggestedFriendProfile)
-                }
                 }
             }
             DispatchQueue.main.async {
@@ -210,19 +212,19 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func fetchFriendRequests() {
         
         var friendRequestProfile = UserProfile()
-    FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("friendRequests").observe(.value, with: {(friendsReqSnapshot) in
+        FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("friendRequests").observe(.value, with: {(friendsReqSnapshot) in
             
             self.myFriendsList.removeAll()
             self.friendRequestsList.removeAll()
-        
-             if let friendReq = friendsReqSnapshot.value as? [String:AnyObject]
-             {
+            
+            if let friendReq = friendsReqSnapshot.value as? [String:AnyObject]
+            {
                 for reqFriendId in friendReq
                 {
-             
+                    
                     FIRDatabase.database().reference().child("users").child(reqFriendId.key).observe(.value, with:
                         { (reqFriendProfileSnapshot) in
-                        
+                            
                             if let reqFriend = reqFriendProfileSnapshot.value as? [String:AnyObject]
                             {
                                 
@@ -237,11 +239,11 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
                                 print("Friends Request",friendRequestProfile.uId )
                                 self.friendRequestsList.append(friendRequestProfile)
                             }
-//                            DispatchQueue.main.async {
-//                                //self.tableView.reloadData()
-//                            }
-//                            
-//                    } , withCancel: nil)
+                            //                            DispatchQueue.main.async {
+                            //                                //self.tableView.reloadData()
+                            //                            }
+                            //
+                            //                    } , withCancel: nil)
                     })
                 }
             }
@@ -261,44 +263,44 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 {
                     for friendid in friend
                     {
-                            FIRDatabase.database().reference().child("users").child(friendid.key).observe(.value, with:
-                                { (myfriendsnapshot) in
-                                    
-                                    if let myfriend = myfriendsnapshot.value as? [String:AnyObject]
-                                    {
-                                        myFriendProfile.fullName = myfriend["fullName"] as! String
-                                        if((myfriend["profileImage"]) != nil){
-                                            myFriendProfile.profileImage = myfriend["profileImage"] as! String
-                                        }
-                                        
-                                        if((myfriend["uId"]) != nil){
-                                            myFriendProfile.uId = myfriend["uId"] as! String
-                                        }
-                                        print("My Friends",myFriendProfile.uId )
-                                        self.myFriendsList.append(myFriendProfile)
+                        FIRDatabase.database().reference().child("users").child(friendid.key).observe(.value, with:
+                            { (myfriendsnapshot) in
+                                
+                                if let myfriend = myfriendsnapshot.value as? [String:AnyObject]
+                                {
+                                    myFriendProfile.fullName = myfriend["fullName"] as! String
+                                    if((myfriend["profileImage"]) != nil){
+                                        myFriendProfile.profileImage = myfriend["profileImage"] as! String
                                     }
-//                                    
-//                                    DispatchQueue.main.async {
-//                                        self.tableView.reloadData()
-//                                    }
-//                                    
-//                            } , withCancel: nil)
+                                    
+                                    if((myfriend["uId"]) != nil){
+                                        myFriendProfile.uId = myfriend["uId"] as! String
+                                    }
+                                    print("My Friends",myFriendProfile.uId )
+                                    self.myFriendsList.append(myFriendProfile)
+                                }
+                                //
+                                //                                    DispatchQueue.main.async {
+                                //                                        self.tableView.reloadData()
+                                //                                    }
+                                //
+                                //                            } , withCancel: nil)
                         })
                     }
                 }
         })
         
     }
-
-    func updateTableView() {
     
-//        self.friendRequestsList.removeAll()
-//        self.suggestedFriendsList.removeAll()
-//        self.myFriendsList.removeAll()
+    func updateTableView() {
+        
+        //        self.friendRequestsList.removeAll()
+        //        self.suggestedFriendsList.removeAll()
+        //        self.myFriendsList.removeAll()
         self.tableView.reloadData()
         
     }
-
+    
 }
 
 extension UIImage {
@@ -317,3 +319,5 @@ extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
 }
+
+
