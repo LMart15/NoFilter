@@ -15,6 +15,8 @@ class HomeCollectionViewController: UICollectionViewController {
     
     var uPostsList = [UserPost]()
     var userCellPosts = UserPost()
+    var passedInUserID = ""
+    var userID = ""
     
     var iPostCount: Int = 0
     
@@ -45,9 +47,14 @@ class HomeCollectionViewController: UICollectionViewController {
         header.profileImg.clipsToBounds = true
         //header.backgroundColor = UIColor.white
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        if (passedInUserID.characters.count > 0){
+            userID = self.passedInUserID
+        }
+        else{
+            userID = (FIRAuth.auth()?.currentUser?.uid)!
+        }
         //print("usersID",userID!)
-        let uref = FIRDatabase.database().reference().child("users").child(userID!)
+        let uref = FIRDatabase.database().reference().child("users").child(self.userID)
         
         uref.observe(.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
@@ -86,8 +93,8 @@ class HomeCollectionViewController: UICollectionViewController {
         eref.observe(.childAdded, with: { (snaps) in
             if let dictn = snaps.value as? [String : AnyObject]
             {
-                let userID = FIRAuth.auth()?.currentUser?.uid
-                if(userID == dictn["uId"] as? String){
+                //let userID = FIRAuth.auth()?.currentUser?.uid
+                if(self.userID == dictn["uId"] as? String){
                     
                     userPost.author = dictn["displayName"] as! String
                     userPost.likes = String(describing: dictn["likes"])
