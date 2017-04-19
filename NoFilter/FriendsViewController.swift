@@ -15,7 +15,8 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var suggestedFriendsList = [UserProfile]()
     var myFriendsList = [UserProfile]()
     var friendRequestsList = [UserProfile]()
-    var suggestedFriends = [String]()
+    //var suggestedFriends = [String]()
+    var suggestedFriends = Set<String>()
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -74,7 +75,10 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             let url = NSURL(string: self.suggestedFriendsList[indexPath.row].profileImage)
             let data = NSData(contentsOf: url! as URL)
             if data != nil {
-                imageView.image = UIImage(data: data! as Data)?.resized(withPercentage: 0.1)
+//                imageView.image = UIImage(data: data! as Data)?.resized(withPercentage: 0.1)
+                imageView.image = UIImage(data: data! as Data)
+                imageView.layer.cornerRadius = imageView.frame.width/2.0
+                imageView.layer.masksToBounds = true
             }
             
             cell.uId = self.suggestedFriendsList[indexPath.row].uId
@@ -96,7 +100,10 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             let url = NSURL(string: self.friendRequestsList[indexPath.row].profileImage)
             let data = NSData(contentsOf: url! as URL)
             if data != nil {
-                imageView.image = UIImage(data: data! as Data)?.resized(withPercentage: 0.1)
+                //                imageView.image = UIImage(data: data! as Data)?.resized(withPercentage: 0.1)
+                imageView.image = UIImage(data: data! as Data)
+                imageView.layer.cornerRadius = imageView.frame.width/2.0
+                imageView.layer.masksToBounds = true
             }
             
             
@@ -117,7 +124,10 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             let url = NSURL(string: self.myFriendsList[indexPath.row].profileImage)
             let data = NSData(contentsOf: url! as URL)
             if data != nil {
-                imageView.image = UIImage(data: data! as Data)?.resized(withPercentage: 0.1)
+                //                imageView.image = UIImage(data: data! as Data)?.resized(withPercentage: 0.1)
+                imageView.image = UIImage(data: data! as Data)
+                imageView.layer.cornerRadius = imageView.frame.width/2.0
+                imageView.layer.masksToBounds = true
             }
             
             
@@ -141,9 +151,8 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         var suggestedFriendProfile = UserProfile()
         
         self.suggestedFriendsList.removeAll()
-        self.tableView.reloadData()
         
-        self.suggestedFriends.append((FIRAuth.auth()?.currentUser?.uid)!)
+        self.suggestedFriends.insert((FIRAuth.auth()?.currentUser?.uid)!)
         FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("myFriends").observe(.value, with:
             {(mysnapshot) in
                 
@@ -151,7 +160,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 {
                     for friendid in friend
                     {
-                        self.suggestedFriends.append(friendid.key)
+                        self.suggestedFriends.insert(friendid.key)
                         print("friendid",friendid.key)
                     }
                 }
@@ -165,7 +174,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 {
                     for friendid in friend
                     {
-                        self.suggestedFriends.append(friendid.key)
+                        self.suggestedFriends.insert(friendid.key)
                         //                        print("friendid",friendid.key)
                     }
                 }
@@ -179,7 +188,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 {
                     for friendid in friend
                     {
-                        self.suggestedFriends.append(friendid.key)
+                        self.suggestedFriends.insert(friendid.key)
                         //                        print("friendid",friendid.key)
                     }
                 }
@@ -221,7 +230,6 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         var friendRequestProfile = UserProfile()
         
         self.friendRequestsList.removeAll()
-        self.tableView.reloadData()
         
         FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("friendRequests").observe(.value, with: {(friendsReqSnapshot) in
             
@@ -261,7 +269,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func fetchmyFriends() {
         
         self.myFriendsList.removeAll()
-        self.tableView.reloadData()
+
         
         var myFriendProfile = UserProfile()
         FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("myFriends").observe(.value, with:
@@ -308,7 +316,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         //        self.friendRequestsList.removeAll()
         //        self.suggestedFriendsList.removeAll()
         //        self.myFriendsList.removeAll()
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
         
     }
     

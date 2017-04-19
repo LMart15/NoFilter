@@ -13,10 +13,10 @@ class HomeHeaderCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var name_lbl: UILabel!
-    @IBOutlet weak var bio_txtview: UITextView!
     @IBOutlet weak var numPosts_lbl: UILabel!
     @IBOutlet weak var numFolllowers_lbl: UILabel!
     @IBOutlet weak var numFollowing_lbl: UILabel!
+    @IBOutlet weak var bio_txtview: UILabel!
     
     var uProfile = [UserProfile]()
     var uPostsList = [UserPost]()

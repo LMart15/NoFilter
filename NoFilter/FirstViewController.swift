@@ -58,6 +58,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         ref = FIRDatabase.database().reference() //?????
         obj.pid="x"
     //  fetchPostedData()
+
         fetchUser()
         fetchPosts()
 //
@@ -127,12 +128,13 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+       
         let cell=tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
         let user=cell.viewWithTag(2) as! UILabel
         let imghs=cell.viewWithTag(3) as! UIImageView
         let tB = cell.viewWithTag(8) as! UIButton
         let vB=cell.viewWithTag(7) as! UIButton
-        let userimage = cell.viewWithTag(1) as! UIImageView
+        let userProfileImage = cell.viewWithTag(1) as! UIImageView
 
         
         // Calling Segue functions to pass Post IDs
@@ -144,7 +146,28 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         userCellPosts = uPostsList[indexPath.row]
         
-        user.text = userCellPosts.author
+        
+        //Fetch Commentor info - Image and Name from Database
+        
+        let commenterInfo = FIRDatabase.database().reference().child("users").child(userCellPosts.uId)
+        
+        commenterInfo.observe(.value, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String : AnyObject]
+            {
+                
+                user.text  = dictionary["fullName"] as! String
+                var uProfileImage = dictionary["profileImage"] as! String
+                
+                let url = NSURL(string: uProfileImage)
+                let udata = NSData(contentsOf: url! as URL) // this URL convert into Data
+                if udata != nil {  //Some time Data value will be nil so we need to validate such things
+                    userProfileImage.image = UIImage(data: udata! as Data)
+                    userProfileImage.layer.cornerRadius = userProfileImage.frame.width/2.0
+                    userProfileImage.layer.masksToBounds = true
+                }
+            }
+        })
+        
         
         let imgurl = userCellPosts.pathToImage
         let url = NSURL(string: imgurl)
@@ -153,9 +176,12 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         imghs.image = UIImage(data: data! as Data)
             cell.postId=self.uPostsList[indexPath.row].postId
             self.valueToPass=self.uPostsList[indexPath.row].postId
-//            print("show Post ID in First View Controller >>>>>>\(self.valueToPass)")
+//          print("show Post ID in First View Controller >>>>>>\(self.valueToPass)")
         }
          SVProgressHUD.dismiss()
+        
+        
+        
         return cell
         
     }
@@ -211,6 +237,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     func fetchPosts(){
         let eref = FIRDatabase.database().reference().child("posts")
         var userPost = UserPost()
+        let userID = FIRAuth.auth()?.currentUser?.uid
         FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("myFriends").observe(.value, with:
             {(mysnapshot) in
                 
@@ -225,21 +252,20 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
 
         })
         
-        eref.queryOrdered(byChild: "timestamp").observe(.childAdded, with: { (snaps) in
+        eref.observe(.childAdded, with: { (snaps) in
             if let dictn = snaps.value as? [String : AnyObject]
             {
-                let userID = FIRAuth.auth()?.currentUser?.uid
-                if(((userID! == (dictn["uId"] as? String)!)) || ((self.userFriends).contains((dictn["uId"] as? String)!)) ){
-                    
-                userPost.author = dictn["displayName"] as! String
-                userPost.likes = String(describing: dictn["likes"]) 
-                userPost.pathToImage = dictn["pathToImage"] as! String
-                userPost.postId = dictn["postId"] as! String
-                userPost.uId = dictn["uId"] as! String
-                userPost.key = snaps.key
-                userPost.timestamp = dictn["timestamp"] as! String
-                self.uPostsList.append(userPost)
-                    
+              if(((userID! == (dictn["uId"] as? String)!)) || ((self.userFriends).contains((dictn["uId"] as? String)!)) )
+                    {
+                        userPost.author = dictn["displayName"] as! String
+                        userPost.likes = String(describing: dictn["likes"])
+                        userPost.pathToImage = dictn["pathToImage"] as! String
+                        userPost.postId = dictn["postId"] as! String
+                        userPost.uId = dictn["uId"] as! String
+                        userPost.key = snaps.key
+                        userPost.timestamp = dictn["timestamp"] as! String
+                        //self.uPostsList.append(userPost)
+                        self.uPostsList.insert(userPost, at: 0)
                 }
             }
             
@@ -248,7 +274,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             }
             
         } , withCancel: nil)
-        
+
     }
     
     @IBAction func performEditStatus(_ sender: Any) {

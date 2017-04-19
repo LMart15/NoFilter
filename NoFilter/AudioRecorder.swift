@@ -100,7 +100,7 @@ class AudioRecorder: UIViewController,AVAudioPlayerDelegate, AVAudioRecorderDele
         recordBtn.isHidden=false
         recordDoneBtn.isEnabled=false
         recordDoneBtn.isHidden=true
-       // dismiss(animated: true, completion: nil)
+       //
         
         
         if audioRecorder?.isRecording == true {
@@ -129,7 +129,7 @@ class AudioRecorder: UIViewController,AVAudioPlayerDelegate, AVAudioRecorderDele
                 
             }
         }
-        
+        dismiss(animated: true, completion: nil)
          /// uploading audio end
     }
     

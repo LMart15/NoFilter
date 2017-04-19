@@ -43,7 +43,7 @@ class HomeCollectionViewController: UICollectionViewController {
         
         header.profileImg.layer.cornerRadius = header.profileImg.frame.size.width / 2
         header.profileImg.clipsToBounds = true
-        header.backgroundColor = UIColor.white
+        //header.backgroundColor = UIColor.white
         
         let userID = FIRAuth.auth()?.currentUser?.uid
         //print("usersID",userID!)
@@ -96,7 +96,8 @@ class HomeCollectionViewController: UICollectionViewController {
                     userPost.uId = dictn["uId"] as! String
                     userPost.key = snaps.key
                     userPost.timestamp = dictn["timestamp"] as! String
-                    self.uPostsList.append(userPost)
+                    //self.uPostsList.append(userPost)
+                    self.uPostsList.insert(userPost, at: 0)
                 }
             }
             
