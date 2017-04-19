@@ -90,10 +90,10 @@ class ProfileViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        //let profileOnTap = UITapGestureRecognizer(target: self, action: #selector(selectProfilePicOnTap))
-        //profileOnTap.numberOfTapsRequired = 1
-        //profileImg.isUserInteractionEnabled = true
-        //profileImg.addGestureRecognizer(profileOnTap)
+        let profileOnTap = UITapGestureRecognizer(target: self, action: #selector(selectProfilePicOnTap))
+        profileOnTap.numberOfTapsRequired = 1
+        profileImg.isUserInteractionEnabled = true
+        profileImg.addGestureRecognizer(profileOnTap)
         
 
         picker.delegate = self 
@@ -101,17 +101,17 @@ class ProfileViewController: UIViewController,UITextFieldDelegate,UIImagePickerC
         userStorage = storage.child("users")
         userRef = FIRDatabase.database().reference()
         
-        //NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: .UIKeyboardWillShow , object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: .UIKeyboardWillHide , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: .UIKeyboardWillShow , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: .UIKeyboardWillHide , object: nil)
         
-        //let hideOnTap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardTap))
-        //hideOnTap.numberOfTapsRequired = 1
-        //self.view.isUserInteractionEnabled = true
-        //self.view.addGestureRecognizer(hideOnTap)
+        let hideOnTap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardTap))
+        hideOnTap.numberOfTapsRequired = 1
+        self.view.isUserInteractionEnabled = true
+        self.view.addGestureRecognizer(hideOnTap)
         
-        //fullName.delegate = self
-        //userName.delegate = self
-        //phoneNumber.delegate = self
+        fullName.delegate = self
+        userName.delegate = self
+        phoneNumber.delegate = self
         
         fetchUser()
     }
