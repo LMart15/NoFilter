@@ -26,6 +26,13 @@ class HomeCollectionViewController: UICollectionViewController {
         
         //SVProgressHUDMaskType.gradient.rawValue.bigEndian.littleEndian.byteSwapped
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
+        if (passedInUserID.characters.count > 0){
+            self.userID = self.passedInUserID
+        }
+        else{
+            self.userID = (FIRAuth.auth()?.currentUser?.uid)!
+        }
+        
         fetchPosts()
         
     }
@@ -47,12 +54,7 @@ class HomeCollectionViewController: UICollectionViewController {
         header.profileImg.clipsToBounds = true
         //header.backgroundColor = UIColor.white
         
-        if (passedInUserID.characters.count > 0){
-            userID = self.passedInUserID
-        }
-        else{
-            userID = (FIRAuth.auth()?.currentUser?.uid)!
-        }
+        
         //print("usersID",userID!)
         let uref = FIRDatabase.database().reference().child("users").child(self.userID)
         
