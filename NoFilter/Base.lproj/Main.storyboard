@@ -730,7 +730,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pf9-Pv-ioJ">
-                                <rect key="frame" x="140.33333333333331" y="131" width="134.99999999999994" height="120"/>
+                                <rect key="frame" x="139.66666666666669" y="131" width="135.00000000000006" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="2Qw-Rp-CPN"/>
                                     <constraint firstAttribute="height" constant="120" id="dhO-iE-Rve"/>
@@ -740,7 +740,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfF-qi-cC3">
-                                <rect key="frame" x="192.33333333333334" y="624" width="30" height="30"/>
+                                <rect key="frame" x="192.66666666666666" y="624" width="30" height="30"/>
                                 <state key="normal" title="play"/>
                                 <connections>
                                     <action selector="playAction:" destination="eDa-dG-qae" eventType="touchUpInside" id="aJ3-KC-6Fz"/>
@@ -1185,12 +1185,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="124" height="124"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kRq-uz-DFs">
-                                            <rect key="frame" x="0.0" y="0.0" width="127" height="127"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kRq-uz-DFs">
+                                            <rect key="frame" x="0.0" y="0.0" width="124" height="124"/>
                                         </imageView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="kRq-uz-DFs" firstAttribute="leading" secondItem="Ct6-U4-Uto" secondAttribute="leading" id="3fg-G7-kgW"/>
+                                    <constraint firstAttribute="bottom" secondItem="kRq-uz-DFs" secondAttribute="bottom" id="92o-VS-qNf"/>
+                                    <constraint firstItem="kRq-uz-DFs" firstAttribute="top" secondItem="Ct6-U4-Uto" secondAttribute="top" id="Nmt-ym-w7j"/>
+                                    <constraint firstAttribute="trailing" secondItem="kRq-uz-DFs" secondAttribute="trailing" id="dr7-Nt-MNU"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="postImg_img" destination="kRq-uz-DFs" id="DRU-VI-Mxf"/>
                                 </connections>
@@ -1308,7 +1313,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4A-g2-1ds" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7584.8000000000002" y="1690.704647676162"/>
+            <point key="canvasLocation" x="7584.057971014493" y="1689.9456521739132"/>
         </scene>
         <!--Images-->
         <scene sceneID="vgG-57-r0z">
