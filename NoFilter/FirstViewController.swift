@@ -13,6 +13,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     //@IBOutlet weak var myTable: UITableView!
     
      var valueToPass:String!
+     var idToPass:String!
        var obj=AudioRecorder()
     
     //likes
@@ -142,6 +143,13 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         tB.addTarget(self, action: #selector(FirstViewController.textBtnHandler(sender:)), for: UIControlEvents.touchUpInside)
         
+        let goProfileOnTap = UITapGestureRecognizer(target: self, action: #selector(viewUserProfile))
+        goProfileOnTap.numberOfTapsRequired = 1
+        userProfileImage.isUserInteractionEnabled = true
+        userProfileImage.addGestureRecognizer(goProfileOnTap)
+        user.isUserInteractionEnabled = true
+        user.addGestureRecognizer(goProfileOnTap)
+        
         
         
         userCellPosts = uPostsList[indexPath.row]
@@ -176,6 +184,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         imghs.image = UIImage(data: data! as Data)
             cell.postId=self.uPostsList[indexPath.row].postId
             self.valueToPass=self.uPostsList[indexPath.row].postId
+            self.idToPass = self.uPostsList[indexPath.row].uId
 //          print("show Post ID in First View Controller >>>>>>\(self.valueToPass)")
         }
          SVProgressHUD.dismiss()
@@ -266,6 +275,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
                         userPost.timestamp = dictn["timestamp"] as! String
                         //self.uPostsList.append(userPost)
                         self.uPostsList.insert(userPost, at: 0)
+                        print(userPost.uId)
                 }
             }
             
@@ -331,6 +341,14 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             //print("PID from Segue in FVC textSend \(self.valueToPass)")
             
         }
+        else if segue.identifier == "passID" {
+            
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let targetController = destinationNavigationController.topViewController as! HomeCollectionViewController
+                    targetController.passedInUserID = self.idToPass
+
+            
+        }
     }
     
     func voiceBtnHandler(sender:UIButton)
@@ -341,6 +359,14 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     func textBtnHandler(sender:UIButton)
     {
         self.performSegue(withIdentifier: "textSend", sender:self)
+    }
+    
+    func viewUserProfile(){
+        
+//        let myVC = storyboard?.instantiateViewController(withIdentifier: "ProfilePage") as! HomeCollectionViewController
+//        myVC.passedInUserID = "7YA8V2w5G5fpBDV5zYZAF4mI7Ua2"
+//        self.navigationController?.pushViewController(myVC, animated: true)
+        self.performSegue(withIdentifier: "passID", sender: self)
     }
     
 }

@@ -21,6 +21,12 @@ class TESTUSERPASSViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func passUserIDAction_btn(_ sender: UIButton) {
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "ProfilePage") as! HomeCollectionViewController
+        myVC.passedInUserID = "7YA8V2w5G5fpBDV5zYZAF4mI7Ua2"
+        self.navigationController?.pushViewController(myVC, animated: true)
+        
+    }
 
     /*
     // MARK: - Navigation
