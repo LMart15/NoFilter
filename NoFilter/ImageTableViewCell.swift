@@ -44,6 +44,11 @@ class ImageTableViewCell: UITableViewCell {
 //        
         
         self.userFriendRef.child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("pendingRequests").child(self.uId).updateChildValues(["timestamp": dateFormat.string(from: currentTime)])
+    //self.userFriendRef.child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("friendRequests").child(self.uId).updateChildValues(["timestamp": dateFormat.string(from: currentTime)])
+    //self.userFriendRef.child(self.uId).child("Friends").child("pendingRequests").child((FIRAuth.auth()?.currentUser?.uid)!).updateChildValues(["timestamp": dateFormat.string(from: currentTime)])
+        
+        
+self.userFriendRef.child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("pendingRequests").child(self.uId).updateChildValues(["timestamp": dateFormat.string(from: currentTime)])
         self.userFriendRef.child(self.uId).child("Friends").child("friendRequests").child((FIRAuth.auth()?.currentUser?.uid)!).updateChildValues(["timestamp": dateFormat.string(from: currentTime)])
         
         self.addAsFriend.isEnabled = false;

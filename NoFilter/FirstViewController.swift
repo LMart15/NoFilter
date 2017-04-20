@@ -48,10 +48,10 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //SVProgressHUD.show(withStatus: "Loading!!")
+      //  SVProgressHUD.show(withStatus: "Loading!!")
         
         //SVProgressHUDMaskType.gradient.rawValue.bigEndian.littleEndian.byteSwapped
-        //SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
+       // SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
 
       //  SVProgressHUD.show(withStatus: "Loading!!")
         //SVProgressHUD.dismiss(withDelay: 1000)
@@ -187,7 +187,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             self.idToPass = self.uPostsList[indexPath.row].uId
 //          print("show Post ID in First View Controller >>>>>>\(self.valueToPass)")
         }
-         SVProgressHUD.dismiss()
+       //  SVProgressHUD.dismiss()
         
         
         
