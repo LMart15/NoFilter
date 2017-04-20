@@ -223,7 +223,7 @@
 				TargetAttributes = {
 					55C8DE1B1E4BFCDB00AB98DD = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = QQDL49Z2BR;
+						DevelopmentTeam = 2BULHRS882;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -473,7 +473,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoFilter/NoFilter.entitlements;
-				DEVELOPMENT_TEAM = QQDL49Z2BR;
+				DEVELOPMENT_TEAM = 2BULHRS882;
 				INFOPLIST_FILE = NoFilter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -490,7 +490,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoFilter/NoFilter.entitlements;
-				DEVELOPMENT_TEAM = QQDL49Z2BR;
+				DEVELOPMENT_TEAM = 2BULHRS882;
 				INFOPLIST_FILE = NoFilter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
