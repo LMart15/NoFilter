@@ -73,18 +73,18 @@ class MyFriendsViewController: UIViewController,UITableViewDelegate,UITableViewD
     func fetchmyFriends() {
 
         var myFriendProfile = UserProfile()
-        
          let friendsref = FIRDatabase.database().reference().child("users")
         
         friendsref.child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("myFriends").observe(.value, with:
             {(mysnapshot) in
-                self.myFriendsList.removeAll()
+                 self.myFriendsList.removeAll()
                 if let friend = mysnapshot.value as? [String:AnyObject]
                 {
                     for friendid in friend
                     {
                         friendsref.child(friendid.key).observe(.value, with:
                             { (myfriendsnapshot) in
+                                
                                 if let myfriend = myfriendsnapshot.value as? [String:AnyObject]
                                 {
                                     myFriendProfile.fullName = myfriend["fullName"] as! String

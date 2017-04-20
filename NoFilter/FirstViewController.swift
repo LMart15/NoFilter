@@ -177,8 +177,6 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         }
         // SVProgressHUD.dismiss()
         
-        
-        
         return cell
         
     }
@@ -244,17 +242,23 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
                     for friendid in friend
                     {
                         self.userFriends.append(friendid.key)
+                        print("FriendsUser",friendid.key)
                     }
                 }
-//                print("FriendsUser",self.userFriends)
+               
 
         })
         
-        eref.observe(.childAdded, with: { (snaps) in
-            if let dictn = snaps.value as? [String : AnyObject]
+        eref.observe(.value, with: { (snaps) in
+         for suggestedpostsSnap in snaps.children{
+            
+            if let dictn = (suggestedpostsSnap as! FIRDataSnapshot).value as? [String : AnyObject]
             {
+                
+                
               if(((userID! == (dictn["uId"] as? String)!)) || ((self.userFriends).contains((dictn["uId"] as? String)!)) )
                     {
+                        print("FriendsInside",dictn["uId"])
                         userPost.author = dictn["displayName"] as! String
                         userPost.likes = String(describing: dictn["likes"])
                         userPost.pathToImage = dictn["pathToImage"] as! String
@@ -266,7 +270,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
                         self.uPostsList.insert(userPost, at: 0)
                 }
             }
-            
+        }
             DispatchQueue.main.async {
                 self.postTable.reloadData()
             }

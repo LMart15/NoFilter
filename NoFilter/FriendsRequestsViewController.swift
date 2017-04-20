@@ -70,6 +70,7 @@ class FriendsRequestsViewController: UIViewController,UITableViewDelegate,UITabl
     func fetchFriendRequests() {
         
         var friendRequestProfile = UserProfile()
+        
         FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("friendRequests").observe(.value, with: {(friendsReqSnapshot) in
             self.friendRequestsList.removeAll()
             if let friendReq = friendsReqSnapshot.value as? [String:AnyObject]
@@ -94,14 +95,14 @@ class FriendsRequestsViewController: UIViewController,UITableViewDelegate,UITabl
                                 print("Friends Request",friendRequestProfile.uId )
                                 self.friendRequestsList.append(friendRequestProfile)
                             }
-                    })
+                            DispatchQueue.main.async
+                            {
+                                self.friendsRequestsTableView.reloadData()
+                            }
+                    } , withCancel: nil)
                 }
             }
-            DispatchQueue.main.async
-                {
-                    self.friendsRequestsTableView.reloadData()
-            }
-        } , withCancel: nil)
+        })
     }
     
     
