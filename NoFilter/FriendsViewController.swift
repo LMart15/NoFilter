@@ -24,10 +24,10 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        SVProgressHUD.show(withStatus: "Loading!!")
+        //SVProgressHUD.show(withStatus: "Loading!!")
         
         //SVProgressHUDMaskType.gradient.rawValue.bigEndian.littleEndian.byteSwapped
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
+        //SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
         //print("fetching useres")
         fetchSuggestFriends();
         fetchFriendRequests();
