@@ -54,7 +54,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
        // SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
 
       //  SVProgressHUD.show(withStatus: "Loading!!")
-      //  SVProgressHUD.dismiss(withDelay: 1000)
+        //SVProgressHUD.dismiss(withDelay: 1000)
         self.tabBarController?.selectedIndex = 1
         ref = FIRDatabase.database().reference() //?????
         obj.pid="x"
