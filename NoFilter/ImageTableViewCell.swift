@@ -13,7 +13,15 @@ import Firebase
 protocol CustomCellUpdater {
     func updateTableView()
 }
-
+protocol ClearSuggestedList {
+    func clearSuggestedFn()
+}
+protocol ClearRequestsList {
+    func clearRequestsFn()
+}
+protocol ClearFriendsList {
+    func clearFriendsFn()
+}
 class ImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImg: UIImageView!
@@ -31,6 +39,9 @@ class ImageTableViewCell: UITableViewCell {
     }
     
     var delegate: CustomCellUpdater?
+    var Fdelegate: ClearFriendsList?
+    var Sdelegate: ClearSuggestedList?
+    var Rdelegate: ClearRequestsList?
 
 
     @IBAction func AddFriend(_ sender: Any) {
@@ -49,6 +60,8 @@ class ImageTableViewCell: UITableViewCell {
         self.addAsFriend.isEnabled = false;
         self.addAsFriend.isHidden = true;
         self.removeFromSuperview()
+      
+        Sdelegate?.clearSuggestedFn()
         //delegate?.updateTableView()
         
         
@@ -69,7 +82,9 @@ class ImageTableViewCell: UITableViewCell {
         self.userFriendRef.child(self.uId).child("Friends").child("pendingRequests").child((FIRAuth.auth()?.currentUser?.uid)!).removeValue();
         
         self.removeFromSuperview()
-        //delegate?.updateTableView()
+        Rdelegate?.clearRequestsFn()
+        Fdelegate?.clearFriendsFn()
+       // delegate?.updateTableView()
     }
     
     
@@ -79,6 +94,8 @@ class ImageTableViewCell: UITableViewCell {
         self.userFriendRef.child(self.uId).child("Friends").child("pendingRequests").child((FIRAuth.auth()?.currentUser?.uid)!).removeValue();
         
         self.removeFromSuperview()
+        Rdelegate?.clearRequestsFn()
+        Fdelegate?.clearFriendsFn()
         //delegate?.updateTableView()
 
         
@@ -90,6 +107,8 @@ class ImageTableViewCell: UITableViewCell {
         self.userFriendRef.child(self.uId).child("Friends").child("myFriends").child((FIRAuth.auth()?.currentUser?.uid)!).removeValue();
         
         self.removeFromSuperview()
+        Rdelegate?.clearRequestsFn()
+        Fdelegate?.clearFriendsFn()
         //delegate?.updateTableView()
     }
     

@@ -25,10 +25,10 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         super.viewDidLoad()
         SVProgressHUD.show(withStatus: "Loading!!")
-        
-        //SVProgressHUDMaskType.gradient.rawValue.bigEndian.littleEndian.byteSwapped
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
-        //print("fetching useres")
+        
+        
+        //fetching friends suggestions, friends requests and users friends
         fetchSuggestFriends();
         fetchFriendRequests();
         fetchmyFriends();
@@ -36,6 +36,9 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     
     override func viewDidAppear(_ animated: Bool) {
+        self.suggestedFriendsList.removeAll()
+        self.friendRequestsList.removeAll()
+        self.myFriendsList.removeAll()
        
     }
     
@@ -150,7 +153,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     {
         var suggestedFriendProfile = UserProfile()
         
-        self.suggestedFriendsList.removeAll()
+//        self.suggestedFriendsList.removeAll()
         
         self.suggestedFriends.insert((FIRAuth.auth()?.currentUser?.uid)!)
         FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("myFriends").observe(.value, with:
@@ -229,7 +232,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         var friendRequestProfile = UserProfile()
         
-        self.friendRequestsList.removeAll()
+//        self.friendRequestsList.removeAll()
         
         FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("friendRequests").observe(.value, with: {(friendsReqSnapshot) in
             
@@ -268,15 +271,12 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func fetchmyFriends() {
         
-        self.myFriendsList.removeAll()
+//        self.myFriendsList.removeAll()
 
         
         var myFriendProfile = UserProfile()
         FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Friends").child("myFriends").observe(.value, with:
             {(mysnapshot) in
-                
-//                self.myFriendsList.removeAll()
-//                self.friendRequestsList.removeAll()
                 
                 if let friend = mysnapshot.value as? [String:AnyObject]
                 {
@@ -312,31 +312,35 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     func updateTableView() {
-        
-        //        self.friendRequestsList.removeAll()
-        //        self.suggestedFriendsList.removeAll()
-        //        self.myFriendsList.removeAll()
-        //self.tableView.reloadData()
-        
+        self.tableView.reloadData()
+    }
+    func clearSuggestedFn() {
+        self.suggestedFriendsList.removeAll()
+    }
+    func clearFriendsFn() {
+        self.myFriendsList.removeAll()
+    }
+    func clearRequestsFn() {
+        self.friendRequestsList.removeAll()
     }
     
 }
 
-extension UIImage {
-    func resized(withPercentage percentage: CGFloat) -> UIImage? {
-        let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)
-        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
-        defer { UIGraphicsEndImageContext() }
-        draw(in: CGRect(origin: .zero, size: canvasSize))
-        return UIGraphicsGetImageFromCurrentImageContext()
-    }
-    func resized(toWidth width: CGFloat) -> UIImage? {
-        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
-        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
-        defer { UIGraphicsEndImageContext() }
-        draw(in: CGRect(origin: .zero, size: canvasSize))
-        return UIGraphicsGetImageFromCurrentImageContext()
-    }
-}
+//extension UIImage {
+//    func resized(withPercentage percentage: CGFloat) -> UIImage? {
+//        let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)
+//        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+//        defer { UIGraphicsEndImageContext() }
+//        draw(in: CGRect(origin: .zero, size: canvasSize))
+//        return UIGraphicsGetImageFromCurrentImageContext()
+//    }
+//    func resized(toWidth width: CGFloat) -> UIImage? {
+//        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+//        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+//        defer { UIGraphicsEndImageContext() }
+//        draw(in: CGRect(origin: .zero, size: canvasSize))
+//        return UIGraphicsGetImageFromCurrentImageContext()
+//    }
+//}
 
 

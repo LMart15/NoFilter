@@ -47,21 +47,18 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SVProgressHUD.show(withStatus: "Loading!!")
+        //SVProgressHUD.show(withStatus: "Loading!!")
         
         //SVProgressHUDMaskType.gradient.rawValue.bigEndian.littleEndian.byteSwapped
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
+        //SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
 
-      //  SVProgressHUD.show(withStatus: "Loading!!")
-      //  SVProgressHUD.dismiss(withDelay: 1000)
-        self.tabBarController?.selectedIndex = 1
+       // self.tabBarController?.selectedIndex = 1
         ref = FIRDatabase.database().reference() //?????
         obj.pid="x"
-    //  fetchPostedData()
-
+        
         fetchUser()
         fetchPosts()
-//
+        
         //status things
         
          editStatusArea.isEnabled=false
@@ -178,7 +175,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             self.valueToPass=self.uPostsList[indexPath.row].postId
 //          print("show Post ID in First View Controller >>>>>>\(self.valueToPass)")
         }
-         SVProgressHUD.dismiss()
+        // SVProgressHUD.dismiss()
         
         
         
@@ -192,6 +189,7 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     func fetchUser(){
        
+        
         let userID = FIRAuth.auth()?.currentUser?.uid
         //print("usersID",userID!)
         let uref = FIRDatabase.database().reference().child("users").child(userID!)
