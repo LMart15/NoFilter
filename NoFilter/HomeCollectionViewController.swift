@@ -22,10 +22,10 @@ class HomeCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SVProgressHUD.show(withStatus: "Loading!!")
+        //SVProgressHUD.show(withStatus: "Loading!!")
         
         //SVProgressHUDMaskType.gradient.rawValue.bigEndian.littleEndian.byteSwapped
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
+        //SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
         if (passedInUserID.characters.count > 0){
             self.userID = self.passedInUserID
         }

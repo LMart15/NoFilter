@@ -48,13 +48,13 @@ class FirstViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SVProgressHUD.show(withStatus: "Loading!!")
+        //SVProgressHUD.show(withStatus: "Loading!!")
         
         //SVProgressHUDMaskType.gradient.rawValue.bigEndian.littleEndian.byteSwapped
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
+        //SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
 
       //  SVProgressHUD.show(withStatus: "Loading!!")
-      //  SVProgressHUD.dismiss(withDelay: 1000)
+        //SVProgressHUD.dismiss(withDelay: 1000)
         self.tabBarController?.selectedIndex = 1
         ref = FIRDatabase.database().reference() //?????
         obj.pid="x"

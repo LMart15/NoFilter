@@ -455,7 +455,7 @@
                                     <outlet property="delegate" destination="87e-af-f5Z" id="8Lr-2k-xbQ"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaX-O1-9K3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaX-O1-9K3">
                                 <rect key="frame" x="96" y="72" width="298" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="YRp-da-erp"/>
@@ -471,7 +471,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgQ-9Y-sml">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgQ-9Y-sml">
                                 <rect key="frame" x="103" y="103" width="239" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -933,7 +933,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RUa-fa-UmN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OeY-6P-A67">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="OeY-6P-A67">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1133,7 +1133,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xje-hH-gvm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="man-icon_32x32px" id="8Ai-v5-prf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w8g-jd-liW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="w8g-jd-liW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1152,7 +1152,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wRY-Ec-ZeR" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings-icon" id="3oz-ik-Rv8"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b4m-yn-fjH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="b4m-yn-fjH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1169,7 +1169,7 @@
         <scene sceneID="ipm-YQ-63T">
             <objects>
                 <collectionViewController id="H9l-oG-WN0" customClass="HomeCollectionViewController" customModule="NoFilter" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="fMb-yN-Thb">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="fMb-yN-Thb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1325,7 +1325,7 @@
                 <navigationController storyboardIdentifier="profileNav" automaticallyAdjustsScrollViewInsets="NO" id="JsB-w5-AVe" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Images" image="images-icon" id="Sse-tA-81f"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b2A-Zt-36v">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="b2A-Zt-36v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1342,7 +1342,7 @@
         <scene sceneID="4yI-v7-pUL">
             <objects>
                 <collectionViewController storyboardIdentifier="ProfilePage" id="cFW-k8-xvA" customClass="HomeCollectionViewController" customModule="NoFilter" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Kuu-0M-8gW">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Kuu-0M-8gW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1486,7 +1486,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hjR-H2-jwD" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZsB-N4-sVs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ZsB-N4-sVs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
